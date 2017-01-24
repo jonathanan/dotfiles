@@ -1,14 +1,34 @@
 " vim:foldmethod=marker:foldlevel=0
-" 'zR/zM' to open/close all folds, '<leader>,' or 'za' to toggle open/close a fold
+" 'zR/zM' to open/close all folds, '<leader>a' or 'za' to toggle open/close a fold
 
-" Misc {{{
-set nocompatible
-set encoding=utf-8
+" ----------------------------------------------------------------------------
+"   .vimrc                                                                {{{
+" ----------------------------------------------------------------------------
+
+" Allow vim to break compatibility with vi
+set nocompatible " This must be first, because it changes other options
+" }}}-------------------------------------------------------------------------
+"   Plugin                                                                {{{
+" ----------------------------------------------------------------------------
+
+" Installing the Plug plugin manager, and all the plugins are included in this
+" other file.
+source $HOME/.vim/plug.vim
+
+" }}}-------------------------------------------------------------------------
+"   Base Options                                                          {{{
+" ----------------------------------------------------------------------------
+
+" Set the leader key to <space> instead of \ because it's easier to reach
 let mapleader = "\<Space>"
-set autoread
-set clipboard^=unnamed
-set wildmenu
-set hidden
+set encoding=utf-8                " I generally want utf-8 encoding
+set clipboard=unnamed,unamedplus  " Use system clipboard
+set hidden                        " Allow buffers with unsaved changes to exist in background
+set backspace=indent,eol,start    " Allow backspaceing over autoindent, line breaks, starts of insert
+set shortmess+=I                  " No welcome screen
+set shortmess+=A                  " No .swp warning
+set history=200                   " Remember teh last 200 :ex commands
+set timeoutlen=500                " Timeout for key code or mapped sequence to complete
 
 " Faster Escape in normal/command mode
 imap jj <Esc>
@@ -19,21 +39,70 @@ map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
-" }}}
 
-" F<N> Mappings {{{
-map <F1> :NERDTreeToggle<CR>
-map <F2> :GitGutterToggle<CR>
-nmap <F3> :set invnumber<CR>:set invrelativenumber<CR>
-let g:ctrlp_map = '<F4>'
-" <F5> Once CtrlP is open: purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
-nmap <F6> :ToggleStripWhitespaceOnSave<CR>
-nnoremap <F7> :set invpaste paste?<CR>
-set pastetoggle=<F7>
-" }}}
+" }}}-------------------------------------------------------------------------
+"   Visual                                                                {{{
+" ----------------------------------------------------------------------------
 
-" Searching {{{
-set incsearch
+" Control Area
+set wildmenu          " Command completion
+set laststatus=2      " The last windows will have a status line always
+set ruler             " Show the line and column number of the cursor postion, seperated by a comma.
+set lazyredraw        " Don't update the screen while executing macros/commands
+set showtabline=1     " Show tabline only if there are at least 2 tab pages
+
+" Buffer Area
+set scrolloff=8       " Minimal number of screen lines to keep above and below the cursor
+set visualbell        " Use a visual bell, don't beep!
+set cursorline        " Highlight the current line
+set number            " Set line numbers
+set relativenumber    " Set relative line numbers
+set nowrap            " Do not wrap at the windows width
+set list listchars=tab:\ \ ,precedes:«,extends:» " Highlight tabs and trailing spaces, Indicate off window text
+set sidescroll=1      " Scroll by 1 character when reaching end of window
+set sidescrolloff=12  " Start side scrolling when only 12 characters remain in window
+set textwidth=80      " Break lines at 80 characters
+set synmaxcol=1024    " Syntax coloring lines that are too long slows down vim
+set virtualedit=block " Allow virtual editing in visual block mode
+
+" Folding
+set foldcolumn=1      " Show 1 folding column
+set foldlevelstart=10 " Open 10 levels of folding when I open a file
+set foldnestmax=10    " Limit to 10 nested folds
+set foldmethod=marker " Fold on {{{ }}}
+nnoremap <leader>a za " Toggle folding
+
+" Splits
+set splitbelow        " Open new split below
+set splitright        " Open new vertical split to the right
+
+" Character meaning when present in 'formatoptions'
+" ------ ---------------------------------------
+" t Auto-wrap text using textwidth (does not apply to comments)
+" c Auto-wrap comments using textwidth, inserting the current comment leader automatically.
+" r Automatically insert the current comment leader after hitting <Enter> in Insert mode.
+" o Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode
+" q Allow formatting of comments with "gq".
+" n Recognize numbered lists
+" j Where it makes sense, remove a comment leader when joining lines
+set formatoptions=tcroqnj
+
+
+" }}}-------------------------------------------------------------------------
+"   Searching                                                             {{{
+" ----------------------------------------------------------------------------
+
+set incsearch      " Show search results as we type
+set showmatch      " Show matching brackets
+set hlsearch       " Highlight search results
+set ignorecase     " Ignore case when searching
+set smartcase      " Don't ignore case if we have a capital letter
+
+" Use regex for searches
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
 
 " Toggle word highlighting
 nmap <silent> <leader>hw :call <SID>hlwordon()<CR>
@@ -46,89 +115,29 @@ omap s :normal vs<CR>
 
 " Search selected text
 vnoremap <leader>/ y/<C-R>"<CR>
-" }}}
 
-" UI Format {{{
-set fileformats=unix,dos
-set formatoptions=tcroqnj
-set laststatus=2
-set invnumber
-set invrelativenumber
-set nowrap
-set autoindent
-set smartindent
-set backspace=indent,eol,start
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set lazyredraw
-set ruler
-set list listchars=tab:\ \ ,precedes:«,extends:»
-set scrolloff=8
-set showtabline=1
-set sidescroll=1
-set sidescrolloff=12
-set splitright
-set synmaxcol=1024
-set textwidth=80
-set timeoutlen=500
-set virtualedit=block
-" }}}
+" }}}-------------------------------------------------------------------------
+"   Tabs                                                                  {{{
+" ----------------------------------------------------------------------------
 
-" Colors {{{
-syntax enable
-set cursorline
-"colorscheme whitenight
-" }}}
+set tabstop=4          " Show a tab as four spaces
+set shiftwidth=4       " Reindent is also four spaces
+set softtabstop=4      " When hit <tab> use four columns
+set expandtab          " Create spaces when I type <tab>
+set autoindent         " Put my cursor in the right place when I start a new line
 
-" Folding {{{
-set foldcolumn=1
-set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent
-nnoremap <leader>a za
-" }}}
+" }}}-------------------------------------------------------------------------
+"   Custom Commands                                                       {{{
+" ----------------------------------------------------------------------------
 
-" Line Shortcuts {{{
-" Move to the beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" Yank to the end of the line instead of the entire line
-map Y y$
-
-" Insert line break in normal mode
-nnoremap <CR> i<CR><ESC>
-
-" Automatically jump to end of pasted text
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
-
-" Jump to end of the current line in insert mode
-inoremap <C-e> <C-o>$
-" }}}
-
-" Leader Shortcuts {{{
-" Buffers
-nmap <leader>t :enew<CR>
-nmap <leader>k :bnext<CR>
-nmap <leader>j :bprevious<CR>
-nmap <leader>x :bp <BAR> bd #<CR>
-
-" Faster saving
+" Faster save and quit
 nmap <silent> <leader>w :w<CR>
 nmap <silent> <leader>wa :wa<CR>
-
-" Faster quitting
 nmap <silent> <leader>q :q<CR>
 nmap <silent> <leader>Q :q!<CR>
 nmap <silent> <leader>qa :qa<CR>
 
-" Enter visual line mode
-nmap <leader><leader> V
-
+" Turn off highlights
 nmap <silent> <leader>noh :noh<CR>
 
 " Press 'qq' to record into q register, End recording with 'q', '<leader>.' to
@@ -153,24 +162,55 @@ endif
 " Toggle diff
 nmap <silent> <leader>d :if &diff<bar>diffoff<bar>else<bar>diffthis<bar>endif<CR>
 
-" More leader shortcuts in other sections...
-" }}}
+" }}}-------------------------------------------------------------------------
+"   Custom Mappings                                                       {{{
+" ----------------------------------------------------------------------------
 
-" Autogroups {{{
-augroup configgroup
-    autocmd!
-    autocmd FileType ruby setlocal tabstop=2
-    autocmd FileType ruby setlocal shiftwidth=2
-    autocmd FileType ruby setlocal softtabstop=2
-    autocmd FileType ruby setlocal commentstring=#\ %s
-    autocmd FileType python setlocal commentstring=#\ %s
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
-augroup END
-" }}}
+" F<N> Mappings
+map <F1> :NERDTreeToggle<CR>
+map <F2> :GitGutterToggle<CR>
+nmap <F3> :set invnumber<CR>:set invrelativenumber<CR>
+let g:ctrlp_map = '<F4>'
+" <F5> Once CtrlP is open: purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
+nmap <F6> :ToggleStripWhitespaceOnSave<CR>
+nnoremap <F7> :set invpaste paste?<CR>
+set pastetoggle=<F7>
 
-" Custom Functions {{{
+" Line Shortcuts
+" Move to the beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" Yank to the end of the line instead of the entire line
+map Y y$
+
+" Insert line break in normal mode
+nnoremap <CR> i<CR><ESC>
+
+" Automatically jump to end of pasted text
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Jump to end of the current line in insert mode
+inoremap <C-e> <C-o>$
+
+" Buffers
+nmap <leader>t :enew<CR>
+nmap <leader>k :bnext<CR>
+nmap <leader>j :bprevious<CR>
+nmap <leader>x :bp <BAR> bd #<CR>
+
+" Enter visual line mode
+nmap <leader><leader> V
+
+" Don't use 'Ex' Mode, and it's annoying to leave
+noremap Q <nop>
+
+" }}}-------------------------------------------------------------------------
+"   Custom Functions                                                      {{{
+" ----------------------------------------------------------------------------
+
 function! s:hlwordon()
     call s:hlwordoff()
     let w:hlword = expand('<cword>')
@@ -188,44 +228,36 @@ function! s:hlwordoff()
         unlet w:hlword
     endif
 endfunction
-" }}}
 
-" Vundle Plugins {{{
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" }}}-------------------------------------------------------------------------
+"   Autogroups                                                            {{{
+" ----------------------------------------------------------------------------
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-sleuth'
-Plugin 'ervandew/supertab'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'jasonwhite/vim-whitenight'
-call vundle#end()
+augroup configgroup
+    autocmd!
+    autocmd FileType ruby setlocal tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufRead,BufNewFile *.py setlocal foldmethod=indent
+augroup END
 
-filetype plugin indent on
-" Install with :PluginInstall
-" }}}
+" }}}-------------------------------------------------------------------------
+"   Configure Plugins                                                     {{{
+" ----------------------------------------------------------------------------
 
 " nerdtree {{{
 "map <F1> :NERDTreeToggle<CR>
 map <leader>nt <F1>
-"Toggle with I
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1   " Show hidden files, toggle with I
 
 "Auto open NERDTree if vim starts up with no files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "Close vim if NERDTree is only window left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -311,5 +343,27 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " vim-whitenight {{{
 colorscheme whitenight
 " }}}
+
+" }}}-------------------------------------------------------------------------
+"   Backup, Swap, and Undo file locations                                 {{{
+" ----------------------------------------------------------------------------
+
+" Don't leave .swp files everywhere. Put them in a central place
+set directory=$HOME/.vim/swapdir//
+set backupdir=$HOME/.vim/backupdir//
+if exists('+undodir')
+    set undodir=$HOME/.vim/undodir
+    set undofile
+endif
+
+" }}}-------------------------------------------------------------------------
+"   Source local .vimrc                                                   {{{
+" ----------------------------------------------------------------------------
+if filereadable(glob("$HOME/.vimrc.local"))
+    source $HOME/.vimrc.local
+endif
+
+" }}}-------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
 
 set modelines=1
