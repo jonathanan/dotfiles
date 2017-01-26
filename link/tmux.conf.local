@@ -1,0 +1,7 @@
+# -- override submodule vendor/tmux settings -----------------------------------
+
+# Rebind prefix to C-Space
+unbind C-a
+unbind C-b
+set -g prefix C-Space
+bind C-Space send-prefix

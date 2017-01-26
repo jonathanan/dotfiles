@@ -7,6 +7,7 @@
 
 " Allow vim to break compatibility with vi
 set nocompatible " This must be first, because it changes other options
+
 " }}}-------------------------------------------------------------------------
 "   Plugin                                                                {{{
 " ----------------------------------------------------------------------------
@@ -22,7 +23,7 @@ source $HOME/.vim/plug.vim
 " Set the leader key to <space> instead of \ because it's easier to reach
 let mapleader = "\<Space>"
 set encoding=utf-8                " I generally want utf-8 encoding
-set clipboard=unnamed,unamedplus  " Use system clipboard
+set clipboard^=unnamed            " Use system clipboard
 set hidden                        " Allow buffers with unsaved changes to exist in background
 set backspace=indent,eol,start    " Allow backspaceing over autoindent, line breaks, starts of insert
 set shortmess+=I                  " No welcome screen
