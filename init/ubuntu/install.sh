@@ -13,6 +13,7 @@ sudo apt-get -qq update
 
 message 'Install APT packages'
 packages=(
+	bash-completion
 	curl
 	ranger
 	silversearcher-ag

@@ -17,7 +17,7 @@ fi
 # Fetch my dotfiles
 if [[ ! -d $dotfiles ]]; then
 	printf '>> Fetching dotfiles\n'
-	git clone --recursive -b init $dotfiles_repo $dotfiles
+	git clone --recursive $dotfiles_repo $dotfiles
 fi
 
 # cd ~/.dotfile
@@ -44,6 +44,11 @@ message 'Running module installs:'
 find . -name 'install.sh' -not -path './init/*' | while read install; do
 	echo $install
 	$install
+done
+
+# Copy files
+for item in copy/*; do
+	copy $item
 done
 
 # cd back to original directory and end

@@ -1,0 +1,89 @@
+[user]
+    name = Jonny An
+    email = EMAIL
+[core]
+    autocrlf = input
+[diff]
+    tool = vimdiff
+[alias]
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+    # edit config
+    ec = "!git config --global --edit"
+
+    # basic
+    s = status
+    cl = clone
+    a = add
+    ci = commit
+    cim = commit -m
+    ac = !git add . && git commit -am
+    co = checkout
+    cob = checkout -b
+    com = checkout master
+    br = branch
+    cp = cherry-pick
+
+    # diff
+    d = diff
+    dc = diff --cached
+    dlc = diff --cached HEAD^
+    do = diff origin
+    # diff revision
+    dr  = "!f() { git diff "$1"^.."$1"; }; f"
+    diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+    # log
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    lg = log --oneline --graph --decorate
+
+    # reset
+    r = reset
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
+
+    # assume
+    # Mark a file as "assume unchanged", which means that Git will treat it
+    # as though there are no changes to it even if there are. Useful for
+    # temporary changes to tracked files
+    assume = update-index --assume-unchanged
+    # Reverse the above
+    unassume = update-index --no-assume-unchanged
+    # Show the files that are currently assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    # Unassume all the assumed files
+    unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+    # Assume all
+    assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+
+    # Get the current branch name (not so useful in itself, but used in other aliases)
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    # Push the current branch to the remote "origin", and set it to track the upstream branch
+    publish = "!git push -u origin $(git branch-name)"
+    # Delete the remote version of the current branch
+    unpublish = "!git push origin :$(git branch-name)"
+
+    # Use your difftool with all the changes that are on the current branch
+    code-review = difftool origin/master
+
+    # merge
+    # Given a merge commit, find the span of commits that exist(ed) on that
+    # branch. Again, not so useful in itself, but used by other aliases.
+    merge-span = "!f() { echo $(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f1)$1$(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f2); }; f"
+    # Find the commits that were introduced by a merge
+    merge-log = "!git log `git merge-span .. $1`"
+    # Show the changes that were introduced by a merge
+    merge-diff = "!git diff `git merge-span ... $1`"
+    # As above, but in your difftool
+    merge-difftool = "!git difftool `git merge-span ... $1`"
+
+[url "https://github.com/"]
+    insteadOf = gh:
+[url "https://gist.github.com/"]
+    insteadOf = gist:

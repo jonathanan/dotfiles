@@ -27,7 +27,7 @@ function link () {
 
   # Move existing file
   if [[ -f $path ]] && [[ ! -L $path ]]; then
-    local localpath=$(local_path $item)
+    local localpath=$(local_path $(basename $item))
     mv $path $localpath
     message "Moved: $path to $localpath"
   fi
@@ -39,6 +39,28 @@ function link () {
     message "Linking: $item to $path"
     ln -s $PWD/$item $path
   fi
+}
+
+# Copies the passed item to its new location
+function copy() {
+  local item=$1
+  local path=$(dot_path $(basename $item))
+  # Check if item to copy exists
+  if [[ ! -e $item ]]; then
+    message "$item doesn't exist"
+    return
+  fi
+
+  # Move existing file
+  if [[ -f $path ]]; then
+		local localpath=$(local_path $(basename $item))
+    mv $path $localpath
+    message "Moved: $path to $localpath"
+  fi
+
+  # Copy file
+  message "Copying: $item to $path"
+  cp $PWD/$item $path
 }
 
 # OS detection
