@@ -1,0 +1,22 @@
+# Use vi style editing in terminal
+set editing-mode vi
+
+# COMMAND mode
+set keymap vi-command
+
+# INSERT mode
+set keymap vi-insert
+
+### Easier Tabbing ###
+
+# Single Tab press to complete path to the longest unambigous pattern and print
+# possible values
+#set show-all-if-ambiguous on
+
+# Tab is case-insensitive
+set completion-ignore-case on
+
+# Insensitive between hyphers and underscores
+set completion-map-case on
+
+######################

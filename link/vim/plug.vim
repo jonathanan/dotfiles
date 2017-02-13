@@ -2,6 +2,9 @@
 "  Plug
 " ----------------------------------------------------------------------------
 
+" Basic Usage:
+" :PlugInstall, :PlugUpdate, :PlugClean, :PlugStatus
+
 " Install vim-plug if we don't already have it
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -26,6 +29,7 @@ Plug 'Valloric/YouCompleteMe', {'on': [], 'do': './install.py'}  " Code-completi
   Plug 'SirVer/ultisnips', {'on': [] }                           " Code snippets
   Plug 'honza/vim-snippets', {'on': [] }                         " Code snippets
 Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
+Plug 'tpope/vim-obsession'                                       " Continuously updated session files
 call plug#end()
 
 augroup load_us_ycm                                              " Load plugins on enter insert mode

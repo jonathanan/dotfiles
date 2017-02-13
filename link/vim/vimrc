@@ -28,8 +28,12 @@ set hidden                        " Allow buffers with unsaved changes to exist 
 set backspace=indent,eol,start    " Allow backspaceing over autoindent, line breaks, starts of insert
 set shortmess+=I                  " No welcome screen
 set shortmess+=A                  " No .swp warning
-set history=200                   " Remember teh last 200 :ex commands
+set history=200                   " Remember the last 200 :ex commands
 set timeoutlen=500                " Timeout for key code or mapped sequence to complete
+if exists("&wildignorecase")      " Ignore case when completing file names and directories.
+    set wildignorecase
+endif
+set spell                         " Spell checking, press 'z=' over misspelled word to replace with suggestion
 
 " Faster Escape in normal/command mode
 imap jj <Esc>
@@ -99,7 +103,7 @@ set hlsearch       " Highlight search results
 set ignorecase     " Ignore case when searching
 set smartcase      " Don't ignore case if we have a capital letter
 
-" Use regex for searches
+" Use 'very magic' regex for searches, :help magic
 nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
@@ -179,8 +183,8 @@ set pastetoggle=<F7>
 
 " Line Shortcuts
 " Move to the beginning/end of line
-nnoremap B ^
-nnoremap E $
+nnoremap H ^
+nnoremap L $
 
 " Yank to the end of the line instead of the entire line
 map Y y$

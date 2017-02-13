@@ -53,7 +53,7 @@ function copy() {
 
   # Move existing file
   if [[ -f $path ]]; then
-		local localpath=$(local_path $(basename $item))
+    local localpath=$(local_path $(basename $item))
     mv $path $localpath
     message "Moved: $path to $localpath"
   fi

@@ -15,9 +15,11 @@ message 'Install APT packages'
 packages=(
 	bash-completion
 	curl
+	python3
 	ranger
 	silversearcher-ag
 	tmux
+	urlview
 	vim
 )
 for package in "${packages[@]}"; do

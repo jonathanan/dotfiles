@@ -8,4 +8,36 @@ bind C-Space send-prefix
 
 # split window
 bind | split-window -h
+bind \ split-window -h # because I forget to press Shift
 bind - split-window -v
+
+# tmux-continuum
+set -g @continuum-restore 'on' # auto-restore last saved env
+
+# tmux-fpp
+set -g @fpp-key 'F' # parse screen for filepaths and perform actions on it
+
+# tmux-resurrect
+set -g @resurrect-save 'S'
+set -g @resurrect-restore 'R'
+set -g @resurrect-capture-pane-contents 'on'
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-processes 'ssh "git log"'
+
+# tmux plugin manager: github.com/tmux-plugins/tpm
+set -g @tpm_plugins '          \
+   tmux-plugins/tpm            \
+   tmux-plugins/tmux-continuum \
+   tmux-plugins/tmux-copycat   \
+   tmux-plugins/tmux-fpp       \
+   tmux-plugins/tmux-open      \
+   tmux-plugins/tmux-resurrect \
+   tmux-plugins/tmux-urlview   \
+   tmux-plugins/tmux-yank      \
+'
+
+# install tpm and plugins if not already installed
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+
+run '~/.tmux/plugins/tpm/tpm'
