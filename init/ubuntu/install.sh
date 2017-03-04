@@ -16,6 +16,7 @@ packages=(
 	bash-completion
 	curl
 	python3
+	python-pip
 	ranger
 	silversearcher-ag
 	tmux
@@ -24,4 +25,15 @@ packages=(
 )
 for package in "${packages[@]}"; do
 	sudo apt-get -qq install "$package" --assume-yes
+done
+
+message 'Upgrade python pip'
+sudo pip install --upgrade pip
+
+message 'Install pip packages'
+pip_packages=(
+	cheat
+)
+for package in "${pip_packages[@]}"; do
+	sudo pip install "$package"
 done

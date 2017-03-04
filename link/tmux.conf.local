@@ -6,13 +6,11 @@ unbind C-b
 set -g prefix C-Space
 bind C-Space send-prefix
 
-# split window
-bind | split-window -h
-bind \ split-window -h # because I forget to press Shift
-bind - split-window -v
-
 # tmux-continuum
 set -g @continuum-restore 'on' # auto-restore last saved env
+
+# tmux-copycat
+unbind-key -t vi-copy Escape # this bind breaks the plugin, use 'q' or 'Enter' to cancel instead
 
 # tmux-fpp
 set -g @fpp-key 'F' # parse screen for filepaths and perform actions on it
