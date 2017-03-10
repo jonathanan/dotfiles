@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+declare -A repos=(
+  #[fork]=upstream
+  [gh:jonathanan/pure]=gh:sindresorhus/pure
+)
+
+# Create temporary workspace
+temp=/tmp/sync-forks/
+mkdir $temp
+original_pwd=$PWD
+cd $temp
+
+# Sync forks
+for i in "${!repos[@]}"; do
+  echo ">> Updating fork $i with upstream ${repos[$i]}"
+  git clone $i
+  cd `basename $i`
+  git remote add upstream ${repos[$i]}
+  git fetch upstream
+  git rebase upstream/master
+  git publish
+done
+
+# Clean temporary workspace
+rm -rf $temp
+cd $original_pwd
+
+echo ">> Done."
