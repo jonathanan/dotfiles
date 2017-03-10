@@ -51,6 +51,10 @@ for item in copy/*; do
 	copy $item
 done
 
+# Change shell
+message 'Changing shell to zsh'
+chsh -s `which zsh`
+
 # cd back to original directory and end
 message "Change directory back to $original_pwd"
 cd $original_pwd
