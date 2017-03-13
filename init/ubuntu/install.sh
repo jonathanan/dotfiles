@@ -22,6 +22,7 @@ packages=(
 	tmux
 	urlview
 	vim
+	zsh
 )
 for package in "${packages[@]}"; do
 	sudo apt-get -qq install "$package" --assume-yes
