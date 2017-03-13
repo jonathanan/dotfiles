@@ -17,7 +17,7 @@ fi
 # Fetch my dotfiles
 if [[ ! -d $dotfiles ]]; then
 	printf '>> Fetching dotfiles\n'
-	git clone -b zsh --recursive $dotfiles_repo $dotfiles
+	git clone --recursive $dotfiles_repo $dotfiles
 fi
 
 # cd ~/.dotfile
