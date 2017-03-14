@@ -29,12 +29,12 @@ for package in "${packages[@]}"; do
 done
 
 message 'Upgrade python pip'
-sudo pip install --upgrade pip
+sudo -H pip install --upgrade pip
 
 message 'Install pip packages'
 pip_packages=(
 	cheat
 )
 for package in "${pip_packages[@]}"; do
-	sudo pip install "$package"
+	sudo -H pip install --upgrade "$package"
 done
