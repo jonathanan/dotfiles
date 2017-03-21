@@ -1,5 +1,9 @@
+# Dotfiles
+alias cd-dotfiles='cd ~/.dotfiles'
+
 # Zsh
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig='vim ~/.zshrc'
+alias zshsource='source ~/.zshrc'
 
 # Git
 alias g='git'

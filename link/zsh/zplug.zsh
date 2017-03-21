@@ -9,7 +9,12 @@ source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'jonathanan/pure'
   zplug 'mafredri/zsh-async'
+zplug 'lib/clipboard', from:oh-my-zsh
+zplug 'lib/completion', from:oh-my-zsh
+zplug 'lib/directories', from:oh-my-zsh
+zplug 'lib/history', from:oh-my-zsh
 zplug 'plugins/ssh-agent', from:oh-my-zsh
+zplug 'plugins/vi-mode', from:oh-my-zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
