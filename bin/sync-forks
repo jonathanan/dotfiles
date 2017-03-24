@@ -19,6 +19,7 @@ for i in "${!repos[@]}"; do
   git remote add upstream ${repos[$i]}
   git fetch upstream
   git rebase upstream/master
+  git pull --no-edit
   git publish
 done
 

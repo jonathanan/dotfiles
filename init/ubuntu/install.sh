@@ -15,13 +15,17 @@ message 'Install APT packages'
 packages=(
 	bash-completion
 	curl
-	python3
+	python
 	python-pip
+	python3
+	python3-pip
 	ranger
 	silversearcher-ag
 	tmux
 	urlview
 	vim
+	virtualenv
+	virtualenvwrapper
 	zsh
 )
 for package in "${packages[@]}"; do
@@ -31,10 +35,13 @@ done
 message 'Upgrade python pip'
 sudo -H pip install --upgrade pip
 
-message 'Install pip packages'
-pip_packages=(
+message 'Upgrade python3 pip'
+sudo -H pip3 install --upgrade pip
+
+message 'Install pip3 packages'
+pip3_packages=(
 	cheat
 )
-for package in "${pip_packages[@]}"; do
-	sudo -H pip install --upgrade "$package"
+for package in "${pip3_packages[@]}"; do
+	sudo -H pip3 install --upgrade "$package"
 done

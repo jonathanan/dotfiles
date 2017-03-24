@@ -4,6 +4,7 @@ export KEYTIMEOUT=1 # Reduce time to switch between insert/cmd mode
 source $HOME/.zsh/zplug.zsh
 source $HOME/.zsh/key-bindings.zsh
 source $HOME/.zsh/aliases.zsh
+source $HOME/.zsh/virtualenv.zsh
 if [[ -a $HOME/.zshrc.local ]]; then
   source $HOME/.zshrc.local
 fi
