@@ -276,6 +276,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " nerdcommenter {{{
 " map = for comment toggling
 map <silent> = <leader>c<space>
+let g:NERDDefaultAlign = 'left'
 " }}}
 
 " syntastic {{{
@@ -349,6 +350,10 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " vim-whitenight {{{
 colorscheme whitenight
+" }}}
+
+" vim-preview {{{
+" Usage: <leader>P or ':Preview'
 " }}}
 
 " }}}-------------------------------------------------------------------------

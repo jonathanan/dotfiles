@@ -30,6 +30,7 @@ Plug 'Valloric/YouCompleteMe', {'on': [], 'do': './install.py'}  " Code-completi
   Plug 'honza/vim-snippets', {'on': [] }                         " Code snippets
 Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
 Plug 'tpope/vim-obsession'                                       " Continuously updated session files
+Plug 'greyblake/vim-preview'                                     " Preview markup files
 call plug#end()
 
 augroup load_us_ycm                                              " Load plugins on enter insert mode
