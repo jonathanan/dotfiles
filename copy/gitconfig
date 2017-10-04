@@ -5,6 +5,8 @@
     autocrlf = input
 [diff]
     tool = vimdiff
+[pull]
+    ff = only
 [alias]
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
@@ -22,6 +24,7 @@
     cob = checkout -b
     com = checkout master
     br = branch
+    brD = branch -D
     cp = cherry-pick
 
     # diff
@@ -82,6 +85,11 @@
     merge-diff = "!git diff `git merge-span ... $1`"
     # As above, but in your difftool
     merge-difftool = "!git difftool `git merge-span ... $1`"
+
+    # Delete any branches that have been merged into master
+    delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    # Prune obsolete remote tracking branches. These are branches that we once tracked, but have since been deleted on the remote.
+    delete-untracked-branches = "!git fetch && git remote prune origin"
 
 [url "https://github.com/"]
     insteadOf = gh:

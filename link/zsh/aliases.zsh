@@ -6,6 +6,7 @@ alias zshconfig='vim ~/.zshrc'
 alias zshsource='source ~/.zshrc'
 
 # Git
+alias gitconfig='vim ~/.gitconfig'
 alias g='git'
 alias git-root='cd ./$(git rev-parse --show-cdup)'
 
