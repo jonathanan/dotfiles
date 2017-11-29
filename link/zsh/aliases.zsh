@@ -1,3 +1,5 @@
+alias ls='ls --color=auto'
+
 # Dotfiles
 alias cd-dotfiles='cd ~/.dotfiles'
 
