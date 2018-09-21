@@ -292,7 +292,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_mode_map = { 'passive_filetypes': ['python', 'python3'] }
+let g:syntastic_mode_map = { 'active_filetypes': ['python', 'python3', 'ruby'] }
+nmap <leader>sc :SyntasticCheck<CR>
+nmap <leader>st :SyntasticToggleMode<CR>
+nmap <leader>sr :SyntasticReset<CR>
+nmap <leader>sn :lnext<CR>
+nmap <leader>sp :lprevious<CR>
 " }}}
 
 " vim-gitgutter {{{

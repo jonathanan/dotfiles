@@ -42,6 +42,7 @@ message 'Install pip3 packages'
 pip3_packages=(
 	cheat
 	tldr
+	rtv
 )
 for package in "${pip3_packages[@]}"; do
 	sudo -H pip3 install --upgrade "$package"
