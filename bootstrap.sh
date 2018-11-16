@@ -3,7 +3,7 @@
 # This script will bootstrap a OSX/Ubuntu machine with my dotfiles configuration
 
 # To Run:
-# `source <(curl -s https://raw.githubusercontent.com/jonathanan/dotfiles/master/bootstrap.sh)`
+# `source <(curl -s https://raw.githubusercontent.com/jonathanan/dotfiles/osx/bootstrap.sh)`
 
 dotfiles="$HOME/.dotfiles"                              # Location of this repo.
 dotfiles_repo='https://github.com/jonathanan/dotfiles'  # GitHub URL
