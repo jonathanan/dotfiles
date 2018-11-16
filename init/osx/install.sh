@@ -19,7 +19,6 @@ packages=(
 	bash-completion
 	curl
 	python
-	python-pip
 	the_silver_searcher
 	tmux
 	urlview
@@ -43,15 +42,15 @@ for package in "${cask_packages[@]}"; do
 	brew cask install "$package"
 done
 
-message 'Upgrade python pip'
-sudo -H pip install --upgrade pip
+message 'Upgrade python pip3'
+sudo -H pip3 install --upgrade pip3
 
-message 'Install pip packages'
-pip_packages=(
+message 'Install pip3 packages'
+pip3_packages=(
 	cheat
 	tldr
 	rtv
 )
-for package in "${pip_packages[@]}"; do
-	sudo -H pip install --upgrade "$package"
+for package in "${pip3_packages[@]}"; do
+	sudo -H pip3 install --upgrade "$package"
 done
