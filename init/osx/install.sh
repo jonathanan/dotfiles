@@ -8,7 +8,7 @@ source "$(dirname $0)/../../lib/_bootstrap.sh"
 is_osx || exit 1
 
 message 'Install Homebrew'
-sudo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 message 'Update Homebrew and upgrade any already-installed formulae'
 brew update
