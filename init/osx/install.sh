@@ -29,7 +29,7 @@ packages=(
 	zsh
 )
 for package in "${packages[@]}"; do
-	sudo brew install "$package"
+	brew install "$package"
 done
 
 message 'Install brew cask packages'
@@ -40,7 +40,7 @@ cask_packages=(
 	spotify
 )
 for package in "${cask_packages[@]}"; do
-	sudo brew cask install "$package"
+	brew cask install "$package"
 done
 
 message 'Upgrade python pip'
