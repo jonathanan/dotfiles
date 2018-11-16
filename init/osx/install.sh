@@ -43,7 +43,7 @@ for package in "${cask_packages[@]}"; do
 done
 
 message 'Upgrade python pip3'
-sudo -H pip3 install --upgrade pip3
+sudo -H pip3 install --upgrade pip
 
 message 'Install pip3 packages'
 pip3_packages=(
