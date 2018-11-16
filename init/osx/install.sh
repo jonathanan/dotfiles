@@ -5,7 +5,7 @@
 source "$(dirname $0)/../../lib/_bootstrap.sh"
 
 # Abort if not Ubuntu
-is_osx || return 1
+is_osx || exit 1
 
 message 'Install Homebrew'
 sudo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
