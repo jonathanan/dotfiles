@@ -17,7 +17,9 @@ fi
 # Fetch my dotfiles
 if [[ ! -d $dotfiles ]]; then
 	printf '>> Fetching dotfiles\n'
-	git clone --recursive $dotfiles_repo $dotfiles
+	git clone --recursive -b osx $dotfiles_repo $dotfiles
+else
+	git pull
 fi
 
 # cd ~/.dotfile
