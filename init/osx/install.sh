@@ -23,8 +23,6 @@ packages=(
 	tmux
 	urlview
 	vim
-	pyenv-virtualenv
-	pyenv-virtualenvwrapper
 	zsh
 )
 for package in "${packages[@]}"; do
@@ -50,6 +48,8 @@ pip3_packages=(
 	cheat
 	tldr
 	rtv
+	virtualenv
+	virtualenvwrapper
 )
 for package in "${pip3_packages[@]}"; do
 	sudo -H pip3 install --upgrade "$package"
