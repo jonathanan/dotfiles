@@ -17,6 +17,7 @@ brew upgrade
 message 'Install brew packages'
 packages=(
 	bash-completion
+	cmake
 	curl
 	python
 	the_silver_searcher
