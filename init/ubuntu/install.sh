@@ -5,7 +5,7 @@
 source "$(dirname $0)/../../lib/_bootstrap.sh"
 
 # Abort if not Ubuntu
-is_ubuntu || return 1
+is_ubuntu || exit 1
 
 message 'Updating APT'
 sudo apt-get -qq update

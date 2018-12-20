@@ -1,4 +1,4 @@
-alias ls='ls --color=auto'
+alias ls='ls -G'
 
 # Dotfiles
 alias cd-dotfiles='cd ~/.dotfiles'
