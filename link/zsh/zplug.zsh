@@ -7,8 +7,8 @@ source ~/.zplug/init.zsh
 
 # Indentation indictates dependency to plugin above
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug 'jonathanan/pure'
-  zplug 'mafredri/zsh-async'
+zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+  zplug 'mafredri/zsh-async', from:github
 zplug 'lib/clipboard', from:oh-my-zsh
 zplug 'lib/completion', from:oh-my-zsh
 zplug 'lib/directories', from:oh-my-zsh

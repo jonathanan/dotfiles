@@ -8,4 +8,4 @@ source $HOME/.zsh/virtualenv.zsh
 if [[ -a $HOME/.zshrc.local ]]; then
   source $HOME/.zshrc.local
 fi
-source $HOME/.zsh/prompt.zsh
+#source $HOME/.zsh/prompt.zsh
