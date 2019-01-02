@@ -3,6 +3,7 @@
     email = EMAIL
 [core]
     autocrlf = input
+    excludefiles = ~/.gitignore
 [diff]
     tool = vimdiff
 [pull]
