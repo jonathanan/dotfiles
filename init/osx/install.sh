@@ -19,6 +19,7 @@ packages=(
 	bash-completion
 	cmake
 	curl
+	flake8
 	python
 	the_silver_searcher
 	tmux
