@@ -10,7 +10,7 @@ bind C-Space send-prefix
 set -g @continuum-restore 'on' # auto-restore last saved env
 
 # tmux-copycat
-unbind-key -t vi-copy Escape # this bind breaks the plugin, use 'q' or 'Enter' to cancel instead
+unbind-key Escape # this bind breaks the plugin, use 'q' or 'Enter' to cancel instead
 
 # tmux-fpp
 set -g @fpp-key 'F' # parse screen for filepaths and perform actions on it
