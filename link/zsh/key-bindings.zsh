@@ -15,3 +15,11 @@ fi
 if [[ "${terminfo[kcbt]}" != "" ]]; then
   bindkey "${terminfo[kcbt]}" reverse-menu-complete
 fi
+
+# Alt + left/right = move backward/forward a word
+bindkey -M viins "^[b" backward-word
+bindkey -M viins "^[f" forward-word
+
+# Cmd + left/right = move begin/end of line
+bindkey -M viins "^[[1~" beginning-of-line
+bindkey -M viins "^[[4~" end-of-line

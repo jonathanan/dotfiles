@@ -39,3 +39,7 @@ if "test ! -d ~/.tmux/plugins/tpm" \
    "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
 run '~/.tmux/plugins/tpm/tpm'
+
+# -- windows & pane creation ---------------------------------------------------
+tmux_conf_new_window_retain_current_path=false
+tmux_conf_new_pane_retain_current_path=true
