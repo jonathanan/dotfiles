@@ -17,15 +17,20 @@ brew upgrade
 message 'Install brew packages'
 packages=(
 	bash-completion
+	bat
 	cmake
 	curl
+	docker-completion
 	flake8
+	fpp
 	python
 	the_silver_searcher
 	tmux
 	urlview
 	vim
+	zplug
 	zsh
+	zsh-completions
 )
 for package in "${packages[@]}"; do
 	brew install "$package"
