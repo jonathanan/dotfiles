@@ -21,10 +21,10 @@ module.exports = {
     fontWeightBold: 'bold',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)',
+    cursorColor: 'rgb(215,208,199)',
 
     // terminal text color under BLOCK cursor
-    cursorAccentColor: '#000',
+    cursorAccentColor: 'rgb(21,21,21)',
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
     cursorShape: 'BLOCK',
@@ -33,14 +33,17 @@ module.exports = {
     cursorBlink: false,
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: 'rgb(215,208,199)',
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: '#000',
+    backgroundColor: 'rgb(21,21,21)',
+
+    //hyper-opacity
+    opacity: 0.85,
 
     // terminal selection color
-    selectionColor: 'rgba(248,28,229,0.3)',
+    selectionColor: 'rgb(250,250,250)',
 
     // border color (window, tabs)
     borderColor: '#333',
@@ -67,21 +70,36 @@ module.exports = {
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: '#000000',
-      red: '#C51E14',
-      green: '#1DC121',
-      yellow: '#C7C329',
-      blue: '#0A2FC4',
-      magenta: '#C839C5',
-      cyan: '#20C5C6',
-      white: '#C7C7C7',
+      black: 'rgb(16,16,16)',
+      boldBlack: 'rgb(64,64,64)',
       lightBlack: '#686868',
+
+      red: 'rgb(232,79,79)',
+      boldRed: 'rgb(210,61,61)',
       lightRed: '#FD6F6B',
+
+      green: 'rgb(184,214,140)',
+      boldGreen: 'rgb(160,207,93)',
       lightGreen: '#67F86F',
+
+      yellow: 'rgb(225,170,93)',
+      boldYellow: 'rgb(243,157,33)',
       lightYellow: '#FFFA72',
+
+      blue: 'rgb(125,193,207)',
+      boldBlue: 'rgb(78,159,177)',
       lightBlue: '#6A76FB',
+
+      magenta: 'rgb(155,100,251)',
+      boldMagenta: 'rgb(133,66,255)',
       lightMagenta: '#FD7CFC',
+
+      cyan: 'rgb(109,135,141)',
+      boldCyan: 'rgb(66,113,123)',
       lightCyan: '#68FDFE',
+
+      white: 'rgb(221,221,221)',
+      boldWhite: 'rgb(221,221,221)',
       lightWhite: '#FFFFFF',
     },
 
@@ -131,7 +149,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-snazzy"],
+  plugins: ["hyper-snazzy", "hyper-opacity"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
