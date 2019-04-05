@@ -13,6 +13,7 @@ zplug 'lib/clipboard', from:oh-my-zsh
 zplug 'lib/completion', from:oh-my-zsh
 zplug 'lib/directories', from:oh-my-zsh
 zplug 'lib/history', from:oh-my-zsh
+zplug 'plugins/kubectl', from:oh-my-zsh
 zplug 'plugins/ssh-agent', from:oh-my-zsh
 zplug 'plugins/vi-mode', from:oh-my-zsh
 zplug 'zsh-users/zsh-autosuggestions'
