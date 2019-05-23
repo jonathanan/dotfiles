@@ -30,3 +30,6 @@ alias ktest='kitchen test'
 
 # Ranger
 alias r='ranger'
+
+# Docker
+alias d='docker'
