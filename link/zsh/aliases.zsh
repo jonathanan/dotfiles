@@ -33,3 +33,4 @@ alias r='ranger'
 
 # Docker
 alias d='docker'
+alias docker-remove-exited-containers='docker rm $(docker ps -a -f status=exited -q)'
