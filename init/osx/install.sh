@@ -24,6 +24,7 @@ packages=(
 	flake8
 	fpp
 	python
+	reattach-to-user-namespace # used with tmux for osx clipboard
 	the_silver_searcher
 	tmux
 	urlview
@@ -38,6 +39,7 @@ done
 
 message 'Install brew cask packages'
 cask_packages=(
+	font-menlo-for-powerline
 	google-chrome
 	hyper
 	shiftit
