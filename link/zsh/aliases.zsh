@@ -3,6 +3,11 @@ alias ls='ls -G'
 # Dotfiles
 alias cd-dotfiles='cd ~/.dotfiles'
 
+# [n]vim
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+fi
+
 # Zsh
 alias zshconfig='vim ~/.zshrc'
 alias zshsource='source ~/.zshrc'

@@ -23,6 +23,7 @@ packages=(
 	docker-completion
 	flake8
 	fpp
+	nvim
 	python
 	reattach-to-user-namespace # used with tmux for osx clipboard
 	the_silver_searcher

@@ -60,6 +60,7 @@ set showtabline=1     " Show tabline only if there are at least 2 tab pages
 set scrolloff=8       " Minimal number of screen lines to keep above and below the cursor
 set visualbell        " Use a visual bell, don't beep!
 set cursorline        " Highlight the current line
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Cursor shape in Neovim
 set number            " Set line numbers
 set relativenumber    " Set relative line numbers
 set nowrap            " Do not wrap at the windows width
@@ -292,13 +293,41 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_mode_map = { 'active_filetypes': ['python', 'python3', 'ruby'] }
+" Use Neomake automatically instead, optionally use syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }
+"let g:syntastic_mode_map = { 'active_filetypes': ['python', 'python3', 'ruby'] }
 let g:syntastic_python_checkers = ['flake8']
 nmap <leader>sc :SyntasticCheck<CR>
 nmap <leader>st :SyntasticToggleMode<CR>
 nmap <leader>sr :SyntasticReset<CR>
 nmap <leader>sn :lnext<CR>
 nmap <leader>sp :lprevious<CR>
+" }}}
+
+" neomake {{{
+" Run Neomake automatically when writing (no delay).
+call neomake#configure#automake('w')
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
+let g:neomake_open_list = 2
+
+augroup my_neomake_signs
+    au!
+    autocmd ColorScheme *
+        \ hi NeomakeErrorSign ctermfg=red |
+        \ hi NeomakeWarningSign ctermfg=yellow |
+        \ hi NeomakeMessageSign ctermfg=blue |
+        \ hi NeomakeInfoSign ctermfg=blue |
+        \ hi NeomakeVirtualtextError ctermfg=red |
+        \ hi NeomakeVirtualtextWarning ctermfg=yellow |
+        \ hi NeomakeVirtualtextMessage ctermfg=blue |
+        \ hi NeomakeVirtualtextInfo ctermfg=blue
+augroup END
+
 " }}}
 
 " vim-gitgutter {{{

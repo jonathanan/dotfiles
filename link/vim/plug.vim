@@ -17,7 +17,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}             " File tree explorer
   Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}   " with Git status flags
 Plug 'scrooloose/nerdcommenter'                                  " Easier commenting
-Plug 'scrooloose/syntastic'                                      " Syntx Checker
+Plug 'scrooloose/syntastic'                                      " Syntax Checker
+Plug 'neomake/neomake'                                           " Asyc run programs/Syntax Checker
 Plug 'tpope/vim-fugitive'                                        " Git from within Vim
 Plug 'airblade/vim-gitgutter'                                    " Git status on lines
 Plug 'ctrlpvim/ctrlp.vim'                                        " Fuzzy searching
