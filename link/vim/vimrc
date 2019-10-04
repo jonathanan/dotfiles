@@ -60,7 +60,7 @@ set showtabline=1     " Show tabline only if there are at least 2 tab pages
 set scrolloff=8       " Minimal number of screen lines to keep above and below the cursor
 set visualbell        " Use a visual bell, don't beep!
 set cursorline        " Highlight the current line
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Cursor shape in Neovim
+set guicursor+=i:blinkon1 " Enable cursor shape and blink on for insert mode
 set number            " Set line numbers
 set relativenumber    " Set relative line numbers
 set nowrap            " Do not wrap at the windows width
