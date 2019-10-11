@@ -58,6 +58,7 @@ pip3_packages=(
 	cheat
 	tldr
 	rtv
+	pynvim
 	virtualenv
 	virtualenvwrapper
 )
