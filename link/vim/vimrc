@@ -392,8 +392,9 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 colorscheme whitenight
 " }}}
 
-" vim-preview {{{
-" Usage: <leader>P or ':Preview'
+" markdown-preview.nvim {{{
+" Usage <leader>P or :MarkdownPreview
+nmap <leader>P <Plug>MarkdownPreviewTogglemap
 " }}}
 
 " }}}-------------------------------------------------------------------------

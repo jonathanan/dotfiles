@@ -31,7 +31,7 @@ Plug 'Valloric/YouCompleteMe', {'on': [], 'do': './install.py'}  " Code-completi
   Plug 'honza/vim-snippets', {'on': [] }                         " Code snippets
 Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
 Plug 'tpope/vim-obsession'                                       " Continuously updated session files
-Plug 'greyblake/vim-preview'                                     " Preview markup files
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " Preview markdown files
 Plug 'tpope/vim-surround'                                        " Quoting/parenthesizing made simple
 call plug#end()
 
