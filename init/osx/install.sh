@@ -21,12 +21,14 @@ packages=(
 	cmake
 	curl
 	docker-completion
+	fd # find alternative, https://github.com/sharkdp/fd
 	flake8
 	fpp
 	nvim
 	python
 	reattach-to-user-namespace # used with tmux for osx clipboard
-	the_silver_searcher
+	ripgrep # rg, code-searching tool, https://github.com/BurntSushi/ripgrep
+	the_silver_searcher # ag, code-searching tool, https://github.com/ggreer/the_silver_searcher
 	tmux
 	urlview
 	vim
