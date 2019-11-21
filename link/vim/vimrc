@@ -114,10 +114,8 @@ vnoremap ? ?\v
 nmap <silent> <leader>hw :call <SID>hlwordon()<CR>
 nmap <silent> <leader>hW :call <SID>hlwordoff()<CR>
 
-" Search with '/', Replace with 'cs', <Esc>, Repeat search + replace with 'n.'
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-omap s :normal vs<CR>
+" Search with '/', Replace with 'cgn', <Esc>, Repeat search + replace with 'n.'
+" builtin at 7.4.110
 
 " Search selected text
 vnoremap <leader>/ y/<C-R>"<CR>
