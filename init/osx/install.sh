@@ -19,6 +19,7 @@ packages=(
 	bash-completion
 	bat
 	cmake
+	coreutils
 	curl
 	docker-completion
 	fd # find alternative, https://github.com/sharkdp/fd
