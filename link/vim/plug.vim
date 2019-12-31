@@ -33,6 +33,9 @@ Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
 Plug 'tpope/vim-obsession'                                       " Continuously updated session files
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " Preview markdown files
 Plug 'tpope/vim-surround'                                        " Quoting/parenthesizing made simple
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " Golang development features
+Plug 'hashivim/vim-terraform'                                    " Terraform integration
+Plug 'juliosueiras/vim-terraform-completion'                     " Terraform Completion
 call plug#end()
 
 augroup load_us_ycm                                              " Load plugins on enter insert mode

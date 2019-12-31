@@ -402,6 +402,16 @@ colorscheme whitenight
 nmap <leader>P <Plug>MarkdownPreviewTogglemap
 " }}}
 
+" vim-go {{{
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" }}}
+
+" vim-terraform/terraform-completion {{{
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
+" }}}
+
 " }}}-------------------------------------------------------------------------
 "   Backup, Swap, and Undo file locations                                 {{{
 " ----------------------------------------------------------------------------
