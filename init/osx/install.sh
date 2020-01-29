@@ -24,7 +24,9 @@ packages=(
 	docker-completion
 	fd # find alternative, https://github.com/sharkdp/fd
 	flake8
+	go
 	fpp
+	ipcalc
 	nvim
 	python
 	reattach-to-user-namespace # used with tmux for osx clipboard
@@ -33,6 +35,7 @@ packages=(
 	tmux
 	urlview
 	vim
+	wget
 	zplug
 	zsh
 	zsh-completions
