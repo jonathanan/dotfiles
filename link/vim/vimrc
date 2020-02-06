@@ -72,7 +72,7 @@ set synmaxcol=1024    " Syntax coloring lines that are too long slows down vim
 set virtualedit=block " Allow virtual editing in visual block mode
 
 " Folding
-set foldcolumn=1      " Show 1 folding column
+set foldcolumn=0      " Show 0 folding column
 set foldlevelstart=10 " Open 10 levels of folding when I open a file
 set foldnestmax=10    " Limit to 10 nested folds
 set foldmethod=marker " Fold on {{{ }}}

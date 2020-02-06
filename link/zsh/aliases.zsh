@@ -39,3 +39,12 @@ alias r='ranger'
 # Docker
 alias d='docker'
 alias docker-remove-exited-containers='docker rm $(docker ps -a -f status=exited -q)'
+
+# Bat
+bat_copy_to_clipboard() {
+    bat $@
+    if [[ "$*" == **-p** ]] || [[ "$*" == **--plain** ]]; then
+        bat $@ | pbcopy
+    fi
+}
+alias bat=bat_copy_to_clipboard
