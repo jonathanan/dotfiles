@@ -284,51 +284,25 @@ map <silent> = <leader>c<space>
 let g:NERDDefaultAlign = 'left'
 " }}}
 
-" syntastic {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" ale {{{
+let g:ale_lint_on_enter = 0
+let g:airline#extensions#ale#enabled = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" inline message
+let g:ale_virtualtext_cursor = 1
 
-" Use Neomake automatically instead, optionally use syntastic
-let g:syntastic_mode_map = {
-  \ "mode": "passive",
-  \ "active_filetypes": [],
-  \ "passive_filetypes": [] }
-"let g:syntastic_mode_map = { 'active_filetypes': ['python', 'python3', 'ruby'] }
-let g:syntastic_python_checkers = ['flake8']
-nmap <leader>sc :SyntasticCheck<CR>
-nmap <leader>st :SyntasticToggleMode<CR>
-nmap <leader>sr :SyntasticReset<CR>
-nmap <leader>sn :lnext<CR>
-nmap <leader>sp :lprevious<CR>
-" }}}
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!!'
 
-" neomake {{{
-" Run Neomake automatically when writing (no delay).
-call neomake#configure#automake('w')
-
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
-let g:neomake_open_list = 2
-
-augroup my_neomake_signs
+augroup my_ale_signs
     au!
     autocmd ColorScheme *
-        \ hi NeomakeErrorSign ctermfg=red |
-        \ hi NeomakeWarningSign ctermfg=yellow |
-        \ hi NeomakeMessageSign ctermfg=blue |
-        \ hi NeomakeInfoSign ctermfg=blue |
-        \ hi NeomakeVirtualtextError ctermfg=red |
-        \ hi NeomakeVirtualtextWarning ctermfg=yellow |
-        \ hi NeomakeVirtualtextMessage ctermfg=blue |
-        \ hi NeomakeVirtualtextInfo ctermfg=blue
+        \ hi AleVirtualTextError ctermfg=red |
+        \ hi AleVirtualTextWarning ctermfg=yellow |
+        \ hi AleVirtualTextInfo ctermfg=blue |
+        \ hi AleVirtualTextStyleError ctermfg=red |
+        \ hi AleVirtualTextStyleWarning ctermfg=yellow |
 augroup END
-
 " }}}
 
 " vim-gitgutter {{{

@@ -14,10 +14,10 @@ endif
 
 " Indentation indictates dependency to plugin above
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}             " File tree explorer
+Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}              " File tree explorer
   Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}   " with Git status flags
-Plug 'scrooloose/nerdcommenter'                                  " Easier commenting
-Plug 'scrooloose/syntastic'                                      " Syntax Checker
+Plug 'preservim/nerdcommenter'                                   " Easier commenting
+Plug 'dense-analysis/ale'                                        " Syntax Checker, Fix files, LSP support
 Plug 'neomake/neomake'                                           " Asyc run programs/Syntax Checker
 Plug 'tpope/vim-fugitive'                                        " Git from within Vim
 Plug 'airblade/vim-gitgutter'                                    " Git status on lines
@@ -33,6 +33,7 @@ Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
 Plug 'tpope/vim-obsession'                                       " Continuously updated session files
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " Preview markdown files
 Plug 'tpope/vim-surround'                                        " Quoting/parenthesizing made simple
+Plug 'tpope/vim-repeat'                                          " Remap . in way that plugins can tap into
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " Golang development features
 Plug 'hashivim/vim-terraform'                                    " Terraform integration
 Plug 'juliosueiras/vim-terraform-completion'                     " Terraform Completion
