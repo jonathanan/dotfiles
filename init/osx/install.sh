@@ -24,6 +24,7 @@ packages=(
 	docker-completion
 	fd # find alternative, https://github.com/sharkdp/fd
 	flake8
+	fzf # fuzzy search
 	go
 	fpp
 	ipcalc
@@ -32,6 +33,8 @@ packages=(
 	reattach-to-user-namespace # used with tmux for osx clipboard
 	ripgrep # rg, code-searching tool, https://github.com/BurntSushi/ripgrep
 	the_silver_searcher # ag, code-searching tool, https://github.com/ggreer/the_silver_searcher
+	terraform
+	tfswitch
 	tmux
 	urlview
 	vim
@@ -46,7 +49,9 @@ done
 
 message 'Install brew cask packages'
 cask_packages=(
+	caffeine
 	font-menlo-for-powerline
+	font-hack-nerd-font
 	google-chrome
 	hyper
 	shiftit

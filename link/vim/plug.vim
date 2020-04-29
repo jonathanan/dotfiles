@@ -16,6 +16,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}              " File tree explorer
   Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}   " with Git status flags
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'                 " with syntax
 Plug 'preservim/nerdcommenter'                                   " Easier commenting
 Plug 'dense-analysis/ale'                                        " Syntax Checker, Fix files, LSP support
 Plug 'neomake/neomake'                                           " Asyc run programs/Syntax Checker
@@ -37,6 +38,7 @@ Plug 'tpope/vim-repeat'                                          " Remap . in wa
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " Golang development features
 Plug 'hashivim/vim-terraform'                                    " Terraform integration
 Plug 'juliosueiras/vim-terraform-completion'                     " Terraform Completion
+Plug 'ryanoasis/vim-devicons'                                    " File type icons
 call plug#end()
 
 augroup load_us_ycm                                              " Load plugins on enter insert mode

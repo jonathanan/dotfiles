@@ -15,7 +15,7 @@ alias zshsource='source ~/.zshrc'
 # Git
 alias gitconfig='vim ~/.gitconfig'
 alias g='git'
-alias git-root='cd ./$(git rev-parse --show-cdup)'
+alias gr='cd ./$(git rev-parse --show-cdup)' # Go to root of git project
 
 # Tmux
 alias tn='tmux new-session -s'
@@ -48,3 +48,6 @@ bat_copy_to_clipboard() {
     fi
 }
 alias bat=bat_copy_to_clipboard
+
+# Terraform
+alias tf='terraform'

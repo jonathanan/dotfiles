@@ -253,6 +253,9 @@ augroup configgroup
     autocmd FileType tf setlocal tabstop=2
                                  \ shiftwidth=2
                                  \ softtabstop=2
+    autocmd BufEnter *.hcl setlocal tabstop=2
+                                 \ shiftwidth=2
+                                 \ softtabstop=2
     autocmd BufEnter *.sh setlocal tabstop=2
                                  \ shiftwidth=2
                                  \ softtabstop=2
