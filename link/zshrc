@@ -5,6 +5,7 @@ source $HOME/.zsh/zplug.zsh
 source $HOME/.zsh/key-bindings.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/virtualenv.zsh
+source $HOME/.zsh/config.zsh
 if [[ -a $HOME/.zshrc.local ]]; then
   source $HOME/.zshrc.local
 fi
