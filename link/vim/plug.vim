@@ -22,9 +22,9 @@ Plug 'dense-analysis/ale'                                        " Syntax Checke
 Plug 'neomake/neomake'                                           " Asyc run programs/Syntax Checker
 Plug 'tpope/vim-fugitive'                                        " Git from within Vim
 Plug 'airblade/vim-gitgutter'                                    " Git status on lines
-Plug 'ctrlpvim/ctrlp.vim'                                        " Fuzzy searching
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }              " Fuzzy searching
+Plug 'junegunn/fzf.vim'                                          " FZF vim wrapper
 Plug 'ntpeters/vim-better-whitespace'                            " Handle trailing whitespaces
-Plug 'rking/ag.vim'                                              " Silver searcher in Vim
 Plug 'tpope/vim-sleuth'                                          " Auto adjust `shiftwidth` and `expandtab`
 Plug 'ervandew/supertab'                                         " Perform insert mode completions with Tab
 Plug 'Valloric/YouCompleteMe', {'on': [], 'do': './install.py'}  " Code-completion engine

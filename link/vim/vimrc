@@ -175,12 +175,10 @@ nmap <silent> <leader>d :if &diff<bar>diffoff<bar>else<bar>diffthis<bar>endif<CR
 " ----------------------------------------------------------------------------
 
 " F<N> Mappings
-map <F1> :NERDTreeToggle<CR>
-map <F2> :GitGutterToggle<CR>
+map <F1> :GitGutterToggle<CR>
+" <F2> Toggle FZF preview window
 nmap <F3> :set invnumber<CR>:set invrelativenumber<CR>
-let g:ctrlp_map = '<F4>'
-" <F5> Once CtrlP is open: purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
-nmap <F6> :ToggleStripWhitespaceOnSave<CR>
+nmap <F4> :ToggleStripWhitespaceOnSave<CR>
 nnoremap <F7> :set invpaste paste?<CR>
 set pastetoggle=<F7>
 
@@ -312,42 +310,39 @@ augroup END
 "map <F2> :GitGutterToggle<CR>
 " }}}
 
-" ctrlp.vim {{{
-"let g:ctrlp_map = '<F4>'
-nmap <leader>p <F4>
-nmap <silent> <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1
+" fzf.vim {{{
+nmap <leader>p :Files<CR>
+nmap <leader>b :Buffers<CR>
+" [Buffers] Jup to the existing window if possible
+let g:fzf_buffers_jump=1
 
-" Don't jump to already open window. This is annoying if you are maintaining several Tab workspaces and want to open two windows into the same file.
-let g:ctrlp_switch_buffer = 0
+nnoremap <leader>rg :Rg<CR>
 
-if executable('rg')
-    set grepprg=rg\ --color=never
-    " Use rg in CtrlP for listing files. Respects .gitignore
-    let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git"'
+" git ls-files
+nmap <leader>gls :GFiles<CR>
+" git status
+nmap <leader>gs :GFiles?<CR>
 
-    " rg is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-elseif executable('ag')
-    " Use ag in CtrlP for listing files. Respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --hidden --ignore .git --nocolor -g ""'
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-    " g:ctrlp_custom_ignore does not work, use .agignore
-    " g:ctrlp_show_hidden does not work
-else
-    "Fall back to using git ls-files if Ag is not available
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Advanced customization using Vim function
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-    " Ignore certain files
-    let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\v[\/]\.(git)$',
-        \ 'file': '\v\.(exe|so|dll)$',
-        \ }
-endif
+" Replace the default dictionary completion with fzf-based fuzzy completion
+inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
+
+" hide status line
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 " }}}
 
 " better-whitespace {{{
@@ -355,10 +350,6 @@ endif
 let g:strip_whitespace_on_save = 1
 let g:better_whitespace_filetypes_blacklist = ['markdown']
 command! SWS :StripWhitespace
-" }}}
-
-" ag.vim {{{
-nnoremap <leader>ag :Ag<Space>
 " }}}
 
 " YouCompleteMe {{{
