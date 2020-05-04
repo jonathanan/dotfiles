@@ -26,10 +26,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }              " Fuzzy searchi
 Plug 'junegunn/fzf.vim'                                          " FZF vim wrapper
 Plug 'ntpeters/vim-better-whitespace'                            " Handle trailing whitespaces
 Plug 'tpope/vim-sleuth'                                          " Auto adjust `shiftwidth` and `expandtab`
-Plug 'ervandew/supertab'                                         " Perform insert mode completions with Tab
-Plug 'Valloric/YouCompleteMe', {'on': [], 'do': './install.py'}  " Code-completion engine
-  Plug 'SirVer/ultisnips', {'on': [] }                           " Code snippets
-  Plug 'honza/vim-snippets', {'on': [] }                         " Code snippets
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                  " Intellisense engine
 Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
 Plug 'tpope/vim-obsession'                                       " Continuously updated session files
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " Preview markdown files
@@ -40,9 +37,3 @@ Plug 'hashivim/vim-terraform'                                    " Terraform int
 Plug 'juliosueiras/vim-terraform-completion'                     " Terraform Completion
 Plug 'ryanoasis/vim-devicons'                                    " File type icons
 call plug#end()
-
-augroup load_us_ycm                                              " Load plugins on enter insert mode
-  autocmd!
-  autocmd InsertEnter * call plug#load('YouCompleteMe', 'ultisnips', 'vim-snippets')
-                      \| autocmd! load_us_ycm
-augroup END
