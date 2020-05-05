@@ -18,6 +18,7 @@ Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}              " File tree exp
   Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}   " with Git status flags
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'                 " with syntax
 Plug 'preservim/nerdcommenter'                                   " Easier commenting
+Plug 'itchyny/lightline.vim'                                     " Vim Statusline
 Plug 'dense-analysis/ale'                                        " Syntax Checker, Fix files, LSP support
 Plug 'neomake/neomake'                                           " Asyc run programs/Syntax Checker
 Plug 'tpope/vim-fugitive'                                        " Git from within Vim
