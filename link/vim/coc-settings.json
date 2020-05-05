@@ -1,0 +1,5 @@
+{
+    "list.normalMappings": {
+        "<space>": "feedkeys:\\<space>"
+    }
+}

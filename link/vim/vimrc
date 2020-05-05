@@ -310,17 +310,17 @@ augroup END
 " }}}
 
 " fzf.vim {{{
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>F :Files!<CR>
+nnoremap <silent> <leader>o :Files<CR>
+nnoremap <silent> <leader>O :Files!<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " [Buffers] Jup to the existing window if possible
 let g:fzf_buffers_jump=1
 
 cnoremap <silent> <C-p> :History<CR>
-cnoremap <silent> <C-_> <ESC>:History/<CR>
-nnoremap <silent> <leader>` :Marks/<CR>
-noremap <silent> <leader>; :Commands/<CR>
-noremap <silent> <leader>l :Blines/<CR>
+cnoremap <silent> <C-P> <ESC>:History/<CR>
+nnoremap <silent> <leader>` :Marks<CR>
+noremap <silent> <leader>; :Commands<CR>
+noremap <silent> <leader>l :Blines<CR>
 "inoremap <silent> <F3> <ESC>:Snippets<CR>
 nnoremap <silent> <F1> :Helptags<CR>
 inoremap <silent> <F1> <ESC>:Helptags<CR>
@@ -526,21 +526,21 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space><space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space><space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space><space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space><space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space><space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space><space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space><space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space><space>p  :<C-u>CocListResume<CR>
 
 " vim-whitenight {{{
 colorscheme whitenight
