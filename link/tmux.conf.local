@@ -20,8 +20,10 @@ tmux_conf_theme_24b_colour=true
 
 # status line style
 tmux_conf_theme_status_fg='#D7D0C7'
-tmux_conf_theme_status_bg='#151515'
+tmux_conf_theme_status_bg='terminal'
 tmux_conf_theme_status_right='CPU: #{cpu_fg_color}#{cpu_percentage} , MEM: #{ram_fg_color}#{ram_percentage} , LoadAvg: #{loadavg} #{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
+
+set-option -g status-position top
 # -- plugins -------------------------------------------------------------------
 
 # tmux-continuum

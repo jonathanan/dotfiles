@@ -49,7 +49,11 @@ module.exports = {
     borderColor: '#333',
 
     // custom CSS to embed in the main window
-    css: '',
+    css: `
+      .terms_terms {
+      margin-top: 20px;
+      }
+    `,
 
     // custom CSS to embed in the terminal window
     termCSS: '',
@@ -139,6 +143,9 @@ module.exports = {
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
+
+    // https://github.com/zeit/hyper/issues/3699
+    webGLRenderer: false
 
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
