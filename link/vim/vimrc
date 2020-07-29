@@ -366,7 +366,6 @@ let g:better_whitespace_filetypes_blacklist = ['markdown']
 command! SWS :StripWhitespace
 " }}}
 
-"
 "coc.nvim {{{
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -411,7 +410,6 @@ endfunction
 
 " Use <c-r> to trigger completion.
 inoremap <silent><expr> <c-r> coc#refresh()
-" }}}
 
 let g:coc_global_extensions = [
   \ 'coc-go',
@@ -541,6 +539,7 @@ nnoremap <silent> <space><space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space><space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space><space>p  :<C-u>CocListResume<CR>
+" }}}
 
 " vim-whitenight {{{
 colorscheme whitenight
