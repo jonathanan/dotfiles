@@ -414,7 +414,7 @@ inoremap <silent><expr> <c-r> coc#refresh()
 let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-json',
-  \ 'coc-pairs',
+  "\ 'coc-pairs',
   \ 'coc-prettier',
   \ 'coc-python',
   \ 'coc-snippets',
