@@ -18,6 +18,7 @@ message 'Install brew packages'
 packages=(
 	bash-completion
 	bat
+	broot
 	cmake
 	coreutils
 	curl
@@ -36,6 +37,7 @@ packages=(
 	terraform
 	tfswitch
 	tmux
+	tree
 	urlview
 	vim
 	wget
