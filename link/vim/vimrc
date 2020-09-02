@@ -549,8 +549,8 @@ colorscheme whitenight
 " }}}
 
 " markdown-preview.nvim {{{
-" Usage <leader>P or :MarkdownPreview
-nmap <leader>P <Plug>MarkdownPreviewTogglemap
+" Usage <leader>md or :MarkdownPreview
+nmap <leader>md <Plug>MarkdownPreviewTogglemap
 " }}}
 
 " vim-go {{{
