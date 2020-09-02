@@ -51,6 +51,7 @@ done
 
 message 'Install brew cask packages'
 cask_packages=(
+	aws-vault
 	caffeine
 	font-menlo-for-powerline
 	font-hack-nerd-font
