@@ -30,6 +30,7 @@ packages=(
 	fpp
 	ipcalc
 	nvim
+	pre-commit
 	python
 	reattach-to-user-namespace # used with tmux for osx clipboard
 	ripgrep # rg, code-searching tool, https://github.com/BurntSushi/ripgrep
