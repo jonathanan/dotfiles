@@ -38,3 +38,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # aws-vault completion
 eval "$(aws-vault --completion-script-zsh)"
+
+# gh cli tool completion
+eval "$(gh completion -s zsh)"

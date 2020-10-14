@@ -26,6 +26,7 @@ packages=(
 	fd # find alternative, https://github.com/sharkdp/fd
 	flake8
 	fzf # fuzzy search
+	gh # github cli tool
 	go
 	fpp
 	ipcalc
@@ -54,6 +55,7 @@ message 'Install brew cask packages'
 cask_packages=(
 	aws-vault
 	caffeine
+	flux
 	font-menlo-for-powerline
 	font-hack-nerd-font
 	google-chrome
@@ -70,6 +72,7 @@ sudo -H pip3 install --upgrade pip
 
 message 'Install pip3 packages'
 pip3_packages=(
+	black
 	cheat
 	tldr
 	rtv
