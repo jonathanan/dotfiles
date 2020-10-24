@@ -27,7 +27,7 @@ set-option -g status-position top
 # -- plugins -------------------------------------------------------------------
 
 # tmux-continuum
-set -g @continuum-restore 'on' # auto-restore last saved env
+#set -g @continuum-restore 'on' # auto-restore last saved env
 
 # tmux-copycat
 unbind-key Escape # this bind breaks the plugin, use 'q' or 'Enter' to cancel instead
@@ -45,12 +45,12 @@ set -g @resurrect-processes 'ssh "git log"'
 # tmux plugin manager: github.com/tmux-plugins/tpm
 set -g @tpm_plugins '          \
    tmux-plugins/tpm            \
-   tmux-plugins/tmux-continuum \
+   #tmux-plugins/tmux-continuum \
    tmux-plugins/tmux-copycat   \
    #tmux-plugins/tmux-cpu       \
    tmux-plugins/tmux-fpp       \
    tmux-plugins/tmux-open      \
-   tmux-plugins/tmux-resurrect \
+   #tmux-plugins/tmux-resurrect \
    tmux-plugins/tmux-urlview   \
    tmux-plugins/tmux-yank      \
 '
