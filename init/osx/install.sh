@@ -60,6 +60,7 @@ cask_packages=(
 	font-hack-nerd-font
 	google-chrome
 	hyper
+	postman
 	shiftit
 	spotify
 )
