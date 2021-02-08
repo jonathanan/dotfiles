@@ -53,6 +53,7 @@ done
 
 message 'Install brew cask packages'
 cask_packages=(
+	anki # flash cards
 	aws-vault
 	caffeine
 	flux
@@ -61,7 +62,7 @@ cask_packages=(
 	google-chrome
 	hyper
 	postman
-	shiftit
+	#shiftit, bought magnet app
 	spotify
 )
 for package in "${cask_packages[@]}"; do
