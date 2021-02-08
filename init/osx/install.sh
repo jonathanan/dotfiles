@@ -4,7 +4,7 @@
 
 source "$(dirname $0)/../../lib/_bootstrap.sh"
 
-# Abort if not Ubuntu
+# Abort if not OSX
 is_osx || exit 1
 
 message 'Install Homebrew'
@@ -64,9 +64,10 @@ cask_packages=(
 	postman
 	#shiftit, bought magnet app
 	spotify
+	visual-studio-code
 )
 for package in "${cask_packages[@]}"; do
-	brew cask install "$package"
+	brew install --cask "$package"
 done
 
 message 'Upgrade python pip3'
