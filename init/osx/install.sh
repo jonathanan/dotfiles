@@ -8,7 +8,7 @@ source "$(dirname $0)/../../lib/_bootstrap.sh"
 is_osx || exit 1
 
 message 'Install Homebrew'
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 message 'Update Homebrew and upgrade any already-installed formulae'
 brew update
@@ -30,14 +30,14 @@ packages=(
 	go
 	fpp
 	ipcalc
-	nvim
+	nvim # m1
 	pre-commit
 	python
 	reattach-to-user-namespace # used with tmux for osx clipboard
 	ripgrep # rg, code-searching tool, https://github.com/BurntSushi/ripgrep
 	the_silver_searcher # ag, code-searching tool, https://github.com/ggreer/the_silver_searcher
-	terraform
-	tfswitch
+	terraform # m1
+	tfswitch # m1
 	tmux
 	tree
 	urlview
@@ -57,8 +57,8 @@ cask_packages=(
 	aws-vault
 	caffeine
 	flux
-	font-menlo-for-powerline
-	font-hack-nerd-font
+	homebrew/cask-fonts/font-menlo-for-powerline
+	homebrew/cask-fonts/font-hack-nerd-font
 	google-chrome
 	hyper
 	postman
