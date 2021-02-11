@@ -61,6 +61,7 @@ cask_packages=(
 	homebrew/cask-fonts/font-hack-nerd-font
 	google-chrome
 	hyper
+	hyperdock
 	postman
 	#shiftit, bought magnet app
 	spotify
