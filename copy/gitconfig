@@ -64,7 +64,7 @@
     # Unassume all the assumed files
     unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
     # Assume all
-    assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+    assumeall = "!git s -s | awk {'print $2'} | xargs git assume"
 
     # Get the current branch name (not so useful in itself, but used in other aliases)
     branch-name = "!git rev-parse --abbrev-ref HEAD"
