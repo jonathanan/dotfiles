@@ -53,6 +53,7 @@ done
 
 message 'Install brew cask packages'
 cask_packages=(
+	adobe-acrobat-reader
 	anki # flash cards
 	aws-vault
 	caffeine
@@ -62,6 +63,8 @@ cask_packages=(
 	google-chrome
 	hyper
 	hyperdock
+	intellij-idea-ce
+	notion
 	postman
 	#shiftit, bought magnet app
 	spotify
