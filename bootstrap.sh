@@ -1,63 +1,66 @@
 #!/usr/bin/env bash
+# Link dotfiles into $HOME. Safe to run again.
+#
+#   ./bootstrap.sh             link files, write local stubs, install plugins
+#   ./bootstrap.sh --packages  also install packages (macOS: Homebrew bundle; all: mise install)
 
-# This script will bootstrap a OSX/Ubuntu machine with my dotfiles configuration
+set -euo pipefail
 
-# To Run:
-# `source <(curl -s https://raw.githubusercontent.com/jonathanan/dotfiles/master/bootstrap.sh)`
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export DOTFILES
+source "$DOTFILES/lib/_bootstrap.sh"
 
-dotfiles="$HOME/.dotfiles"                              # Location of this repo.
-dotfiles_repo='https://github.com/jonathanan/dotfiles'  # GitHub URL
+packages=false
+for arg in "$@"; do
+  case $arg in
+    --packages) packages=true ;;
+    *) echo "usage: $0 [--packages]" >&2; exit 2 ;;
+  esac
+done
 
-# Install Git (Ubuntu only, Git is standard on OSX with XCode or CLT)
-if [[ ! "$(type -P git)" ]] && [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
-	printf '>> Installing Git\n'
-	sudo apt-get -qq install git --assume-yes
+dot=${DOTFILES/#$HOME/\$HOME}
+
+message "Linking dotfiles"
+remove_stale_links
+link_dotfiles
+link_config
+
+message "Writing local stubs"
+ensure_stub "$HOME/.zshrc" "source \"$dot/zsh/zshrc\""
+ensure_stub "$HOME/.zshenv" "source \"$dot/zsh/zshenv\""
+ensure_stub "$HOME/.gitconfig" "[include] path = ${DOTFILES/#$HOME/~}/git/gitconfig" \
+  "# Local git config, not tracked. Set user.email here: git config --global user.email <email>"
+
+if is_macos; then
+  message "Linking macOS-only files"
+  git -C "$DOTFILES" submodule update --init vendor/tmux
+  link "$DOTFILES/vendor/tmux/.tmux.conf" "$HOME/.tmux.conf"
+  link "$DOTFILES/macos/tmux.conf.local" "$HOME/.tmux.conf.local"
+  link "$DOTFILES/macos/wezterm.lua" "$HOME/.wezterm.lua"
 fi
 
-# Fetch my dotfiles
-if [[ ! -d $dotfiles ]]; then
-	printf '>> Fetching dotfiles\n'
-	git clone --recursive $dotfiles_repo $dotfiles
-else
-	git pull
+if $packages; then
+  if is_macos; then
+    message "Installing Homebrew packages"
+    brew bundle --file "$DOTFILES/macos/Brewfile"
+  fi
+  if command -v mise >/dev/null 2>&1; then
+    message "Installing mise tools"
+    mise install
+  fi
 fi
 
-# cd ~/.dotfile
-original_pwd=$PWD   # Remember directory to cd back to.
-printf ">> Change directory to $dotfiles\n"
-cd $dotfiles
+if [[ ! -d $HOME/.antidote ]]; then
+  message "Installing antidote"
+  git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
+fi
 
-# Source libs
-source lib/_bootstrap.sh
+if command -v nvim >/dev/null 2>&1 || command -v vim >/dev/null 2>&1; then
+  message "Installing editor plugins"
+  "$DOTFILES/link/vim/install.sh" || message "Editor plugin install reported errors. Check with :PlugStatus."
+fi
 
-# Run init scripts
-find ./init/ -name 'install.sh' | while read install; do
-	echo $install
-	$install
-done
+message "Syncing agent instructions"
+"$DOTFILES/bin/agents-sync"
 
-# Create symlinks to everything in /links subdirectory
-for item in link/*; do
-	link $item
-done
-
-# Install modules
-message 'Running module installs:'
-find . -name 'install.sh' -not -path './init/*' | while read install; do
-	echo $install
-	$install
-done
-
-# Copy files
-for item in copy/*; do
-	copy $item
-done
-
-# Change shell
-message 'Changing shell to zsh'
-chsh -s `which zsh`
-
-# cd back to original directory and end
-message "Change directory back to $original_pwd"
-cd $original_pwd
-message 'Done.'
+message "Done. Start a new shell."

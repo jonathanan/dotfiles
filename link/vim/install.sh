@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
-echo "Updating and cleaning Vim plugins"
+editor=vim
+command -v nvim >/dev/null 2>&1 && editor=nvim
+echo "Updating and cleaning plugins with $editor"
 
-vim -E -s <<-EOF
+plug=~/.vim/autoload/plug.vim
+if [[ ! -f $plug ]]; then
+  curl -fsSLo "$plug" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+"$editor" -E -s <<-EOF2
 	:source ~/.vim/vimrc
-	:PlugInstall
-	:PlugUpdate
-	:PlugClean
+	:PlugInstall --sync
+	:PlugUpdate --sync
+	:PlugClean!
 	:qa
-EOF
+EOF2

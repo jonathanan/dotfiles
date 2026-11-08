@@ -1,9 +1,10 @@
+# Shared git config. The local ~/.gitconfig stub includes this file.
+# Keep user.email and machine-specific settings in ~/.gitconfig.
 [user]
     name = Jonny An
-    email = EMAIL
 [core]
     autocrlf = input
-    excludefiles = ~/.gitignore
+    excludesfile = ~/.dotfiles/git/gitignore
 [diff]
     tool = vimdiff
 [pull]

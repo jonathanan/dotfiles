@@ -1,0 +1,11 @@
+# Shared zshenv. The local ~/.zshenv stub sources this file.
+# Runs for every zsh, including non-interactive shells and ssh commands.
+
+if [[ "$OSTYPE" == darwin* && -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# mise shims, so non-interactive shells find mise-managed tools (herdr, nvim)
+if [[ -d $HOME/.local/share/mise/shims ]]; then
+  path=("$HOME/.local/share/mise/shims" $path)
+fi

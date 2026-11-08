@@ -1,0 +1,14 @@
+[settings.node]
+gpg_verify = false
+
+[tools]
+node = "lts"
+python = "latest"
+herdr = "latest"
+fzf = "latest"
+fd = "latest"
+ripgrep = "latest"
+bat = "latest"
+neovim = { version = "latest", os = ["macos"] }
+# Official Linux builds need glibc 2.32+. neovim-releases also runs on older glibc (Amazon Linux 2).
+"github:neovim/neovim-releases" = { version = "latest", os = ["linux"] }

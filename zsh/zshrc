@@ -1,0 +1,26 @@
+# Shared zsh config. The local ~/.zshrc stub sources this file.
+# Machine-specific config goes in ~/.zshrc.local or in the stub itself.
+
+export DOTFILES="${${(%):-%x}:A:h:h}"
+
+if (( $+commands[nvim] )); then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+export KEYTIMEOUT=1 # Reduce time to switch between insert/cmd mode
+
+source "$DOTFILES/zsh/plugins.zsh"
+source "$DOTFILES/zsh/key-bindings.zsh"
+source "$DOTFILES/zsh/aliases.zsh"
+source "$DOTFILES/zsh/config.zsh"
+
+autoload -Uz promptinit && promptinit && prompt pure
+
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
+
+if [[ -r $HOME/.zshrc.local ]]; then
+  source "$HOME/.zshrc.local"
+fi
