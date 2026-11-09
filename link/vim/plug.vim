@@ -26,6 +26,7 @@ Plug 'junegunn/fzf.vim'                                          " FZF vim wrapp
 Plug 'ntpeters/vim-better-whitespace'                            " Handle trailing whitespaces
 Plug 'tpope/vim-sleuth'                                          " Auto adjust `shiftwidth` and `expandtab`
 Plug 'jasonwhite/vim-whitenight'                                 " Colorscheme
+Plug 'rebelot/kanagawa.nvim'                                     " Colorscheme (nvim)
 Plug 'tpope/vim-obsession'                                       " Continuously updated session files
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " Preview markdown files
 Plug 'tpope/vim-surround'                                        " Quoting/parenthesizing made simple
