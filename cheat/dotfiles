@@ -6,7 +6,7 @@ Setup
 
 Scripts (not on PATH, run as $DOTFILES/bin/<name>)
 --------------------------------------------------
-- `agents-sync`       : Write ~/.codex/AGENTS.md; create ~/.claude/CLAUDE.md import stub
+- `agents-sync`       : Write ~/.codex/AGENTS.md; create ~/.claude/CLAUDE.md import stub; refresh the herdr skill
 - `herdr-config-sync` : Write ~/.config/herdr/config.toml and reload the herdr server
 - `claude-statusline` : Claude Code status line (model, context %)
 - `sync-forks`        : Rebase my forks on upstream

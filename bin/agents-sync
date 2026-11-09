@@ -42,3 +42,25 @@ if [[ -d $HOME/.claude ]]; then
     echo ">> Wrote: $out"
   fi
 fi
+
+# herdr skill: the herdr binary prints its own skill (`herdr --skill`), so the copy
+# always matches the installed version. Refresh it for each harness that is present.
+herdr_bin=$(command -v herdr || true)
+for candidate in "$HOME/.local/share/mise/installs/herdr/latest/herdr" "$HOME/.local/share/mise/shims/herdr"; do
+  [[ -z $herdr_bin && -x $candidate ]] && herdr_bin=$candidate
+done
+if [[ -n $herdr_bin ]] && skill=$("$herdr_bin" --skill 2>/dev/null) && [[ $skill == ---* ]]; then
+  for dir in "$HOME/.claude" "$HOME/.kiro" "$HOME/.codex"; do
+    [[ -d $dir ]] || continue
+    out="$dir/skills/herdr/SKILL.md"
+    if [[ -f $out ]] && [[ "$(cat "$out")" == "$skill" ]]; then
+      echo ">> Ok: $out"
+    else
+      mkdir -p "$(dirname "$out")"
+      printf '%s\n' "$skill" >"$out"
+      echo ">> Wrote: $out"
+    fi
+  done
+else
+  echo ">> Skip: herdr skill (herdr not found)"
+fi
