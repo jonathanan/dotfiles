@@ -3,5 +3,7 @@
 
 onboarding = false
 
+# In-app toasts. "terminal" (ask the outer terminal for a desktop notification) did
+# not reach the terminal through herdr --remote.
 [ui.toast]
-delivery = "terminal"
+delivery = "herdr"
