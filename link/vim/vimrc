@@ -305,7 +305,7 @@ cnoremap <silent> <C-p> :History<CR>
 cnoremap <silent> <C-P> <ESC>:History/<CR>
 nnoremap <silent> <leader>` :Marks<CR>
 noremap <silent> <leader>; :Commands<CR>
-noremap <silent> <leader>l :Blines<CR>
+noremap <silent> <leader>l :BLines<CR>
 "inoremap <silent> <F3> <ESC>:Snippets<CR>
 nnoremap <silent> <F1> :Helptags<CR>
 inoremap <silent> <F1> <ESC>:Helptags<CR>
@@ -320,8 +320,10 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
+" Insert mode completion. Word completion needs a word list, which some hosts lack.
+if filereadable('/usr/share/dict/words')
+    inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+endif
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
@@ -332,12 +334,6 @@ xnoremap <silent> <leader>t "zy:Tags <C-r>z<CR>
 " fzf.BTags generate tags on-fly for current file
 nnoremap <silent> <leader>T :BTags<CR>
 xnoremap <silent> <leader>T "zy:BTags <C-r>z<CR>
-
-" Advanced customization using Vim function
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-" Replace the default dictionary completion with fzf-based fuzzy completion
-inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
 
 " hide status line
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
@@ -364,7 +360,7 @@ endif
 
 " markdown-preview.nvim {{{
 " Usage <leader>md or :MarkdownPreview
-nmap <leader>md <Plug>MarkdownPreviewTogglemap
+nmap <leader>md <Plug>MarkdownPreviewToggle
 " }}}
 
 " }}}-------------------------------------------------------------------------
