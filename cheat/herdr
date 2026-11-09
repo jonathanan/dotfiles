@@ -49,3 +49,11 @@ herdr agent wait <agent> --until idle
 herdr agent read <agent> --lines 80
 herdr agent send-keys <agent> esc
 herdr agent attach <agent>
+
+Liaison pattern (one agent drives others with the herdr skill)
+Start the liaison agent inside a herdr pane (the skill checks HERDR_ENV=1)
+Name herdr in the prompt or the skill does not load, for example:
+  "Use herdr to start a claude reviewer in a pane to the right and give it this task: ..."
+A blocked worker waits at an approval prompt. The liaison asks you; answer in that pane
+<prefix> g then b lists blocked agents
+After a timeout or agent_prompt_stalled, check `herdr agent read` before resending
