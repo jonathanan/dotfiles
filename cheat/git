@@ -1,21 +1,39 @@
-- `g la`     : List all aliases
-- `g s`      : status
-- `g cim "msg"` : commit -m        `g ac "msg"` : add . and commit -am
-- `g cob x`  : checkout -b x       `g brD x` : branch -D x
-- `g com`    : checkout the default branch (master, main, mainline from origin/HEAD)
-- `g default-branch` : print it (`git remote set-head origin --auto` if wrong)
-- `g d` / `g dc` : diff / diff --cached
-- `g dlc`    : diff of the last commit (--cached HEAD^)
-- `g dr <sha>` : diff of one commit
-- `g lg`     : log --oneline --graph
-- `g ls` / `g ll` : log one line / with file stats
-- `g ld` / `g lds` : log with relative / short dates
-- `g r1` / `g rh1` : reset HEAD^ (soft) / --hard
-- `g assume <f>` / `g unassume <f>` / `g assumed` : hide local edits to tracked files
-- `g publish` : push -u origin <current branch>
-- `g unpublish` : delete the remote copy of the current branch
-- `g delete-untracked-branches` : fetch and prune origin
-- `g delete-merged-branches` : checkout default branch, delete branches merged into it
-- `g code-review` : difftool against origin/<default branch>
-- `gh:user/repo` : URL shorthand for https://github.com/user/repo
-- `gr`       : cd to the repo root (zsh alias)
+git
+===
+
+g is an alias for git.
+
+BASICS
+  g la                            List all aliases
+  g s                             status
+  g cim "msg"                     commit -m
+  g ac "msg"                      add . and commit -am
+  g cob x                         checkout -b x
+  g brD x                         branch -D x
+  g com                           Check out the default branch (master, main or mainline,
+                                  from origin/HEAD)
+  g default-branch                Print the default branch (git remote set-head origin
+                                  --auto if it is wrong)
+  gr                              cd to the repo root (zsh alias)
+
+DIFF AND LOG
+  g d / g dc                      diff / diff --cached
+  g dlc                           Diff of the last commit (--cached HEAD^)
+  g dr <sha>                      Diff of one commit
+  g code-review                   difftool against origin/<default branch>
+  g lg                            log --oneline --graph
+  g ls / g ll                     Log, one line / with file stats
+  g ld / g lds                    Log with relative / short dates
+
+RESET AND LOCAL EDITS
+  g r1 / g rh1                    reset HEAD^ (soft) / --hard
+  g assume <f> / g unassume <f>   Hide / show local edits to a tracked file
+  g assumed                       List hidden files
+
+BRANCHES AND REMOTES
+  g publish                       push -u origin <current branch>
+  g unpublish                     Delete the remote copy of the current branch
+  g delete-merged-branches        Check out the default branch and delete branches merged
+                                  into it
+  g delete-untracked-branches     Fetch and prune origin
+  gh:user/repo                    URL shorthand for https://github.com/user/repo

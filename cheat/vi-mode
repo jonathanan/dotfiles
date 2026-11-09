@@ -1,55 +1,35 @@
-Use `ESC` or `CTRL-[` to enter `Normal mode`.
+zsh vi-mode
+===========
 
-History
--------
-- `ctrl-p` : Previous command in history
-- `ctrl-n` : Next command in history
-- `/`      : Search backward in history (normal mode)
-- `ctrl-r` : Fuzzy search history with fzf (insert mode)
-- `n`      : Repeat the last `/`
+Press ESC or ctrl-[ to enter normal mode.
 
-Vim edition
------------
-- `vv`  : Edit current command line in $EDITOR (normal mode)
+HISTORY
+  ctrl-p / ctrl-n      Previous / next command in history
+  ctrl-r               Fuzzy search history with fzf (insert mode)
+  /                    Search backward in history (normal mode)
+  n                    Repeat the last /
 
-Movement
---------
-- `$`   : To the end of the line
-- `^`   : To the first non-blank character of the line
-- `0`   : To the first character of the line
-- `w`   : [count] words forward
-- `W`   : [count] WORDS forward
-- `e`   : Forward to the end of word [count] inclusive
-- `E`   : Forward to the end of WORD [count] inclusive
-- `b`   : [count] words backward
-- `B`   : [count] WORDS backward
-- `t{char}`   : Till before [count]'th occurrence of {char} to the right
-- `T{char}`   : Till before [count]'th occurrence of {char} to the left
-- `f{char}`   : To [count]'th occurrence of {char} to the right
-- `F{char}`   : To [count]'th occurrence of {char} to the left
-- `;`   : Repeat latest f, t, F or T [count] times
-- `,`   : Repeat latest f, t, F or T in opposite direction
+EDIT IN THE EDITOR
+  vv                   Edit the command line in $EDITOR (normal mode)
 
-Insertion
----------
-- `i`   : Insert text before the cursor
-- `I`   : Insert text before the first character in the line
-- `a`   : Append text after the cursor
-- `A`   : Append text at the end of the line
-- `o`   : Insert new command line below the current one
-- `O`   : Insert new command line above the current one
+MOVEMENT
+  0 / ^ / $            First character / first non-blank / end of the line
+  w / W                [count] words / WORDS forward
+  b / B                [count] words / WORDS backward
+  e / E                Forward to the end of the word / WORD
+  f{char} / F{char}    To the [count]th {char} to the right / left
+  t{char} / T{char}    Till before the [count]th {char} to the right / left
+  ; / ,                Repeat the last f, t, F or T / in the opposite direction
 
-Delete and Insert
------------------
-- `ctrl-h`      : While in *Insert mode*: delete character before the cursor
-- `ctrl-w`      : While in *Insert mode*: delete word before the cursor
-- `d{motion}`   : Delete text that {motion} moves over
-- `dd`          : Delete line
-- `D`           : Delete characters under the cursor until the end of the line
-- `c{motion}`   : Delete {motion} text and start insert
-- `cc`          : Delete line and start insert
-- `C`           : Delete to the end of the line and start insert
-- `r{char}`     : Replace the character under the cursor with {char}
-- `R`           : Enter replace mode: Each character replaces existing one
-- `x`           : Delete [count] characters under and after the cursor
-- `X`           : Delete [count] characters before the cursor
+INSERT
+  i / a                Insert before / append after the cursor
+  I / A                Insert at the first character / append at the end of the line
+  o / O                New command line below / above
+
+DELETE AND CHANGE
+  ctrl-h / ctrl-w      Insert mode: delete the character / word before the cursor
+  d{motion} / dd / D   Delete over {motion} / the line / to the end of the line
+  c{motion} / cc / C   Change over {motion} / the line / to the end of the line
+  x / X                Delete [count] characters under / before the cursor
+  r{char}              Replace the character under the cursor
+  R                    Replace mode: each character replaces an existing one

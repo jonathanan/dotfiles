@@ -1,46 +1,63 @@
-Leader is `Space`. Escape in insert/cmdline: `jj`
+nvim
+====
 
-Files and search (fzf.vim)
---------------------------
-- `<leader>o`    : Files (`<leader>O` fullscreen)
-- `<leader>b`    : Buffers (jumps to an open window)
-- `<leader>rg`   : Rg (ripgrep)
-- `<leader>gls`  : GFiles (git ls-files)
-- `<leader>gs`   : GFiles? (git status)
-- `<leader>;`    : Commands     `<leader>``  : Marks
-- `<leader>t`    : Tags         `<leader>T`  : BTags (visual: selected text)
-- `<leader>l`    : BLines (lines in this buffer)
-- `<leader><tab>`: Search mappings
-- `ctrl-p`       : In `:` cmdline, command History
-- `F1`           : Helptags
-- `ctrl-x ctrl-f`: Insert mode, complete path (`ctrl-x ctrl-l` line, `ctrl-x ctrl-k` word if /usr/share/dict/words exists)
+The leader is Space. jj escapes in insert mode and on the command line.
 
-Buffers, windows, files
------------------------
-- `<leader>j` / `<leader>k` : Previous / next buffer
-- `<leader>x`  : Close buffer, keep window
-- `ctrl-h/j/k/l` : Move to left/down/up/right window
-- `<leader>nt` : Toggle NERDTree (`I` toggles hidden files)
-- `<leader>w` `:w`, `<leader>wa` `:wa`, `<leader>W` sudo save
-- `<leader>q` `:q`, `<leader>Q` `:q!`, `<leader>qa` `:qa`
+FILES AND SEARCH (FZF.VIM)
+  <leader>o                 Files (<leader>O fullscreen)
+  <leader>b                 Buffers (jumps to an open window)
+  <leader>rg                Rg (ripgrep)
+  <leader>gls               GFiles (git ls-files)
+  <leader>gs                GFiles? (git status)
+  <leader>l                 BLines (lines in this buffer)
+  <leader>;                 Commands
+  <leader>                  Marks
+  <leader>t                 Tags
+  <leader>T                 BTags (visual mode: selected text)
+  <leader><tab>             Search mappings
+  ctrl-p                    On the : command line, command history
+  F1                        Helptags
 
-Editing
--------
-- `H` / `L`    : Start / end of line      `Y` : Yank to end of line
-- `Enter`      : Break line (normal mode) `ctrl-e` : End of line (insert mode)
-- `=`          : Toggle comment (nerdcommenter)
-- `<leader>rw` : Replace word under cursor everywhere (visual: selection)
-- `<leader>/`  : Search for the visual selection
-- `<leader>hw` / `<leader>hW` : Highlight word under cursor on / off
-- `<leader>noh`: Clear search highlight
-- `<leader>.`  : Play macro `q` (record with `qq`)
+INSERT MODE COMPLETION
+  ctrl-x ctrl-f             Complete a path
+  ctrl-x ctrl-l             Complete a line
+  ctrl-x ctrl-k             Complete a word (only if /usr/share/dict/words exists)
 
-Git and toggles
----------------
-- `]c` / `[c`  : Next / previous hunk (gitgutter default)
-- `<leader>hp` / `<leader>hs` / `<leader>hu` : Preview / stage / undo hunk (gitgutter default)
-- `:Git` / `:G`: fugitive (no custom maps)
-- `<leader>d`  : Toggle diff for this window
-- `F4` numbers, `F5` gitgutter, `F6` strip whitespace on save, `F7` paste
-- `<leader>cd` : lcd to file dir   `<leader>ev` : Edit vimrc
-- `<leader>md` : Toggle Markdown preview (Markdown files)
+BUFFERS, WINDOWS AND FILES
+  <leader>j / <leader>k     Previous / next buffer
+  <leader>x                 Close the buffer, keep the window
+  ctrl-h/j/k/l              Move to the window left/down/up/right
+  <leader>nt                Toggle NERDTree (I toggles hidden files)
+  <leader>w / <leader>wa    :w / :wa
+  <leader>W                 Save with sudo
+  <leader>q / <leader>Q / <leader>qa
+                            :q / :q! / :qa
+
+EDITING
+  H / L                     Start / end of the line
+  Y                         Yank to the end of the line
+  Enter                     Break the line (normal mode)
+  ctrl-e                    End of the line (insert mode)
+  =                         Toggle comment (nerdcommenter)
+  <leader>rw                Replace the word under the cursor everywhere (visual mode: the
+                            selection)
+  <leader>/                 Search for the visual selection
+  <leader>hw / <leader>hW   Highlight the word under the cursor on / off
+  <leader>noh               Clear the search highlight
+  <leader>.                 Play macro q (record with qq)
+
+GIT
+  ]c / [c                   Next / previous hunk (gitgutter default)
+  <leader>hp / <leader>hs / <leader>hu
+                            Preview / stage / undo the hunk (gitgutter default)
+  :Git / :G                 fugitive (no custom maps)
+  <leader>d                 Toggle diff for this window
+
+TOGGLES AND MISC
+  F4                        Line numbers
+  F5                        gitgutter
+  F6                        Strip whitespace on save
+  F7                        Paste mode
+  <leader>cd                lcd to the directory of the file
+  <leader>ev                Edit the vimrc
+  <leader>md                Toggle the Markdown preview (Markdown files)

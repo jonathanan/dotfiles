@@ -1,19 +1,24 @@
-Shell keys (vi insert and normal mode)
---------------------------------------
-- `ctrl-t`   : Paste selected files/dirs (fd, with bat preview)
-- `ctrl-r`   : Search history (`?` toggles preview of long commands)
-- `alt-c`    : cd into selected directory (Left Option is Alt in WezTerm)
-- `**<Tab>`  : Fuzzy completion, e.g. `vim **<Tab>`, `cd **<Tab>`
+fzf
+===
 
-Inside fzf (FZF_DEFAULT_OPTS, also fzf.vim)
--------------------------------------------
-- `tab` / `shift-tab` : Mark / unmark (multi-select is on)
-- `ctrl-a`   : Select all and accept
-- `F2`       : Toggle preview (hidden by default)
-- `F3`       : Open item in bat (or less)
-- `ctrl-d` / `ctrl-u` : Half page down / up
-- `ctrl-y`   : Copy selection to clipboard (macOS only)
+SHELL KEYS
+Work in vi insert and normal mode.
 
-Defaults
---------
-- One match is accepted at once (`-1`). File list is `git ls-files` in a repo, else `fd`.
+  ctrl-t            Paste the selected files or directories (fd, with a bat preview)
+  ctrl-r            Search history (? toggles a preview of long commands)
+  alt-c             cd into the selected directory (Left Option is Alt in WezTerm)
+  **<Tab>           Fuzzy completion, for example vim **<Tab> or cd **<Tab>
+
+INSIDE FZF
+From FZF_DEFAULT_OPTS. They also apply in fzf.vim.
+
+  tab / shift-tab   Mark / unmark (multi-select is on)
+  ctrl-a            Select all and accept
+  F2                Toggle the preview (hidden by default)
+  F3                Open the item in bat (or less)
+  ctrl-d / ctrl-u   Half page down / up
+  ctrl-y            Copy the selection to the clipboard (macOS only)
+
+DEFAULTS
+  A single match is accepted at once (-1)
+  The file list is git ls-files in a repo, else fd

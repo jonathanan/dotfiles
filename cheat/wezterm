@@ -1,23 +1,29 @@
+WezTerm
+=======
+
 macOS only. No leader key: herdr owns panes and sessions.
 
-Custom
-------
-- `cmd-shift-d` : New tab running `herdr --remote desk --remote-keybindings server`
-- Left Option is Alt (for `alt-c`, `alt-b/f`); Right Option types special characters
+CUSTOM
+  cmd-shift-d                     New tab running herdr --remote desk --remote-keybindings
+                                  server
+  Left Option is Alt (for alt-c, alt-b/f). Right Option types special characters.
 
-Defaults
---------
-- `cmd-t` / `cmd-w`   : New / close tab
-- `cmd-1..8`, `cmd-9` : Go to tab N / last tab
-- `cmd-shift-[` / `cmd-shift-]` : Previous / next tab
-- `cmd-n`             : New window
-- `cmd-f`             : Search scrollback
-- `cmd-k`             : Clear scrollback
-- `cmd-=` / `cmd--` / `cmd-0` : Font bigger / smaller / reset
-- `cmd-r`             : Reload config
-- `ctrl-shift-p`      : Command palette
-- `ctrl-shift-x`      : Copy mode
-- `ctrl-shift-space`  : Quick select (copy a hash, path, URL)
-- `ctrl-shift-u`      : Pick a character / emoji
-- `ctrl-shift-l`      : Debug overlay
-- `shift-pageup/pagedown` : Scroll a page
+TABS AND WINDOWS
+  cmd-t / cmd-w                   New / close tab
+  cmd-1..8 / cmd-9                Go to tab N / last tab
+  cmd-shift-[ / cmd-shift-]       Previous / next tab
+  cmd-n                           New window
+
+SCROLLBACK AND TEXT
+  cmd-f                           Search the scrollback
+  cmd-k                           Clear the scrollback
+  shift-pageup / shift-pagedown   Scroll a page
+  ctrl-shift-x                    Copy mode
+  ctrl-shift-space                Quick select (copy a hash, path or URL)
+  ctrl-shift-u                    Pick a character or emoji
+
+CONFIG AND TOOLS
+  cmd-= / cmd-- / cmd-0           Font bigger / smaller / reset
+  cmd-r                           Reload the config
+  ctrl-shift-p                    Command palette
+  ctrl-shift-l                    Debug overlay

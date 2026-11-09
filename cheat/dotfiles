@@ -1,29 +1,37 @@
-Setup
------
-- `~/.dotfiles/bootstrap.sh`            : Link files, write stubs, sync agents and herdr
-- `~/.dotfiles/bootstrap.sh --packages` : Also Brewfile (macOS) and `mise install`
-- Replaced files are kept as `<file>.bak.<timestamp>`
+dotfiles
+========
 
-Scripts (not on PATH, run as $DOTFILES/bin/<name>)
---------------------------------------------------
-- `agents-sync`       : Write ~/.codex/AGENTS.md; create ~/.claude/CLAUDE.md import stub; refresh the herdr skill
-- `herdr-config-sync` : Write ~/.config/herdr/config.toml and reload the herdr server
-- `claude-statusline` : Claude Code status line (model, context %)
-- `sync-forks`        : Rebase my forks on upstream
+SETUP
+  ~/.dotfiles/bootstrap.sh   Link files, write stubs, sync agents and herdr
+  ~/.dotfiles/bootstrap.sh --packages
+                             Also run the Brewfile (macOS) and mise install
+  Replaced files are kept as <file>.bak.<timestamp>
 
-Cheatsheets
------------
-- `cheat <name>` / `cheat -l` : Show a sheet / list sheets (`cheat/` in this repo)
-- `cheat -e <name>`  : Edit or create a sheet
+SCRIPTS
+On PATH (zsh/zshenv adds $DOTFILES/bin).
 
-Where local config goes
------------------------
-- `~/.zshrc.local`, `~/.zshrc`, `~/.zshenv` : Machine zsh config (stubs source the repo)
-- `~/.gitconfig`      : user.email and machine git settings
-- `~/.vimrc.local`    : Machine vim/nvim config
-- `~/.config/herdr/config.local.toml` : Then run herdr-config-sync
-- `~/.agents-local/*.md` : Then run agents-sync
+  agents-sync                Write ~/.codex/AGENTS.md, create the ~/.claude/CLAUDE.md import
+                             stub, refresh the herdr skill
+  herdr-config-sync          Write ~/.config/herdr/config.toml and reload the herdr server
+  cheat-pager                Color cheat sheets (the cheat pager). NO_COLOR turns it off
+  claude-statusline          Claude Code status line (model, context %)
+  sync-forks                 Rebase my forks on upstream
 
-Aliases
--------
-- `cd-dotfiles`, `zshconfig`, `zshsource`, `gitconfig`
+CHEATSHEETS
+  cheat <name>               Show a sheet (sheets live in cheat/ in this repo)
+  cheat -l                   List sheets
+  cheat -e <name>            Edit or create a sheet
+
+WHERE LOCAL CONFIG GOES
+  ~/.zshrc.local, ~/.zshrc, ~/.zshenv
+                             Machine zsh config (the stubs source the repo)
+  ~/.gitconfig               user.email and machine git settings
+  ~/.vimrc.local             Machine vim and nvim config
+  ~/.config/herdr/config.local.toml
+                             Machine herdr config. Then run herdr-config-sync
+  ~/.agents-local/*.md       Machine agent rules. Then run agents-sync
+
+ALIASES
+  cd-dotfiles                cd to the repo
+  zshconfig / zshsource      Edit / reload the zsh config
+  gitconfig                  Edit the shared git config

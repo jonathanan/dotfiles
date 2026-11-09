@@ -15,3 +15,6 @@ fi
 export LAVISH_AXI_TELEMETRY=0
 export LAVISH_AXI_HTML_APP_API_URL=http://127.0.0.1:9
 export LAVISH_AXI_HOST=127.0.0.1
+
+# Scripts in this repo (agents-sync, cheat-pager, herdr-config-sync, ...)
+path+=("${${(%):-%x}:A:h:h}/bin")

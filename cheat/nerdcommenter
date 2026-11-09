@@ -1,39 +1,29 @@
-`=` (normal and visual mode)
-Toggles comments. Custom mapping for `<leader>c<space>` in vimrc.
+nerdcommenter
+=============
 
-`[count]<leader>cc` |NERDComComment|
-Comment out the current line or text selected in visual mode.
+[count] is optional. Most commands also work on a visual selection.
 
-`[count]<leader>cn` |NERDComNestedComment|
-Same as <leader>cc but forces nesting.
+CUSTOM
+  =                         Toggle comments (normal and visual mode). Mapped to
+                            <leader>c<space> in the vimrc
 
-`[count]<leader>c<space>` |NERDComToggleComment|
-Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+COMMENT
+  [count]<leader>cc         Comment out the line or the selection
+  [count]<leader>cn         Same as <leader>cc, but force nesting
+  [count]<leader>cm         Comment with one set of multipart delimiters
+  [count]<leader>cs         "Sexy" comment: a block layout
+  [count]<leader>cy         Same as <leader>cc, but yank the lines first
+  [count]<leader>cl / [count]<leader>cb
+                            Same as <leader>cc, with delimiters aligned on the left / both
+                            sides
+  <leader>c$                Comment from the cursor to the end of the line
+  <leader>cA                Add delimiters at the end of the line and insert between them
 
-`[count]<leader>cm` |NERDComMinimalComment|
-Comments the given lines using only one set of multipart delimiters.
+TOGGLE AND UNCOMMENT
+  [count]<leader>c<space>   Toggle. If the top line is commented, uncomment all lines, and
+                            the reverse
+  [count]<leader>ci         Toggle each line on its own
+  [count]<leader>cu         Uncomment
 
-`[count]<leader>ci` |NERDComInvertComment|
-Toggles the comment state of the selected line(s) individually.
-
-`[count]<leader>cs` |NERDComSexyComment|
-Comments out the selected lines with a pretty block formatted layout.
-
-`[count]<leader>cy` |NERDComYankComment|
-Same as <leader>cc except that the commented line(s) are yanked first.
-
-`<leader>c$` |NERDComEOLComment|
-Comments the current line from the cursor to the end of line.
-
-`<leader>cA` |NERDComAppendComment|
-Adds comment delimiters to the end of line and goes into insert mode between them.
-
-`<leader>ca` |NERDComAltDelim|
-Switches to the alternative set of delimiters.
-
-`[count]<leader>cl`
-`[count]<leader>cb` |NERDComAlignedComment|
-Same as |NERDComComment| except that the delimiters are aligned down the left side (`<leader>cl`) or both sides (`<leader>cb`).
-
-`[count]<leader>cu` NERDComUncommentLine|
-Uncomments the selected line(s).
+DELIMITERS
+  <leader>ca                Switch to the alternative delimiters

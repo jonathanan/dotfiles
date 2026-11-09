@@ -1,51 +1,26 @@
-Examples:
----------
-Press `cs"'` inside
+vim-surround
+============
 
-    "Hello world!"
+. repeats ds, cs and yss (vim-repeat is installed).
 
-to change it to
+CHANGE AND DELETE
+  cs"'                            "Hello world!" becomes 'Hello world!'
+  cs'<q>                          'Hello world!' becomes <q>Hello world!</q>
+  cst"                            <q>Hello world!</q> becomes "Hello world!"
+  ds"                             "Hello world!" becomes Hello world!
+  ds{ds)                          ({ Hello } world!) becomes Hello world!
 
-    'Hello world!'
+ADD
+  ysiw]                           On "Hello", Hello world! becomes [Hello] world! (iw is a
+                                  text object)
+  cs]{                            [Hello] world! becomes { Hello } world! (use } for no
+                                  space)
+  yssb or yss)                    Wrap the line in parentheses: ({ Hello } world!)
+  ysiw<em>                        Hello world! becomes <em>Hello</em> world!
 
-Now press `cs'<q>` to change it to
+VISUAL MODE
+  V then S<p class="important">   Wrap the selected lines:
 
-    <q>Hello world!</q>
-
-To go full circle, press `cst"` to get
-
-    "Hello world!"
-
-To remove the delimiters entirely, press `ds"`.
-
-    Hello world!
-
-Now with the cursor on "Hello", press `ysiw]` (`iw` is a text object).
-
-    [Hello] world!
-
-Let's make that braces and add some space (use `}` instead of `{` for no
-space): `cs]{`
-
-    { Hello } world!
-
-Now wrap the entire line in parentheses with `yssb` or `yss)`.
-
-    ({ Hello } world!)
-
-Revert to the original text: `ds{ds)`
-
-    Hello world!
-
-Emphasize hello: `ysiw<em>`
-
+  <p class="important">
     <em>Hello</em> world!
-
-Finally, let's try out visual mode. Press a capital V (for linewise
-visual mode) followed by `S<p class=important">`.
-
-    <p class="important">
-      <em>Hello</em> world!
-    </p>
-
-The `.` command repeats `ds`, `cs`, and `yss` (vim-repeat is installed).
+  </p>

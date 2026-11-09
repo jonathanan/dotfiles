@@ -1,0 +1,50 @@
+#!/bin/sh
+# Pager for cheat: colors the plain-text sheets in cheat/, then shows them in less.
+#   title bold, SECTION headers bold yellow, key column cyan, <placeholders> magenta,
+#   --flags green, "# comments" dim.
+# Output stays plain when stdout is not a terminal, or when NO_COLOR is set.
+# CHEAT_PAGER_COLOR=always forces color (for testing).
+
+if [ -n "$NO_COLOR" ] || { [ ! -t 1 ] && [ "$CHEAT_PAGER_COLOR" != always ]; }; then
+  exec cat
+fi
+
+colorize() {
+  awk '
+  BEGIN {
+    E = sprintf("%c", 27)
+    R = E "[0m"; B = E "[1m"; D = E "[2m"
+    Y = E "[1;33m"; C = E "[36m"; M = E "[35m"; G = E "[32m"
+  }
+  # <placeholders> and --flags inside a colored segment, then return to its base color
+  function hl(s, base) {
+    gsub(/<[^>]+>/, M "&" base, s)
+    # Pad with a space so the flag pattern needs no ^ inside a group (BSD awk)
+    s = " " s
+    gsub(/[ [(]--?[A-Za-z][A-Za-z0-9-]*/, G "&" base, s)
+    return base substr(s, 2) R
+  }
+  NR == 1 { print B $0 R; next }
+  /^=+$/ { print D $0 R; next }
+  /^[A-Z0-9][A-Z0-9 ()\/,.&-]*$/ && /[A-Z]/ { print Y $0 R; next }
+  /^  [^ ]/ {
+    body = substr($0, 3)
+    # command line with a trailing comment
+    c = index(body, "   # ")
+    if (c > 0) { print "  " hl(substr(body, 1, c - 1), C) D substr(body, c) R; next }
+    # key column, then a gap of 3 or more spaces, then the description
+    if (match(body, /[^ ]   +[^ ]/)) {
+      k = substr(body, 1, RSTART); rest = substr(body, RSTART + 1)
+      match(rest, /^ +/)
+      print "  " hl(k, C) substr(rest, 1, RLENGTH) substr(rest, RLENGTH + 1)
+      next
+    }
+    # prose note (a sentence), else a key or command on its own line
+    if (body ~ /[.:]$/ || body ~ /\. [A-Z]/) { print; next }
+    print "  " hl(body, C); next
+  }
+  { print }
+  '
+}
+
+colorize | less -FRX

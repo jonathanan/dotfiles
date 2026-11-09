@@ -1,59 +1,81 @@
-herdr 0.9.5. Prefix is C-b. "<prefix> c" means press C-b, release, then c.
-<prefix> ? shows every active binding (/ filters)
+herdr
+=====
 
-Panes
-<prefix> v splits right, <prefix> - (minus) splits down
-<prefix> h, <prefix> j, <prefix> k and <prefix> l focus panes ala Vim
-<prefix> Tab and <prefix> S-Tab cycle panes
-<prefix> S-h, S-j, S-k, S-l swap panes
-<prefix> z zooms the focused pane
-<prefix> r enters resize mode
-<prefix> x closes the pane
-<prefix> S-p renames the pane
-<prefix> e opens the scrollback in an editor
+herdr 0.9.5. The prefix is C-b. <prefix> c means: press C-b, release, then press c.
 
-Copy mode
-<prefix> [ enters copy mode. h/j/k/l, w/b/e, C-u/C-d move. / and ? search, n/N repeat
-v or Space starts a selection, y or Enter copies, q or Esc leaves
-Mouse drag copies without copy mode
+  <prefix> ?                      Show every active binding (/ filters)
 
-Tabs
-<prefix> c new tab, <prefix> S-t rename, <prefix> S-x close
-<prefix> n and <prefix> p next/previous tab, <prefix> 1..9 jump to a tab
+PANES
+  <prefix> v                      Split right
+  <prefix> -                      Split down
+  <prefix> h/j/k/l                Focus the pane left/down/up/right
+  <prefix> Tab / <prefix> S-Tab   Cycle panes
+  <prefix> S-h/j/k/l              Swap panes
+  <prefix> z                      Zoom the focused pane
+  <prefix> r                      Enter resize mode
+  <prefix> x                      Close the pane
+  <prefix> S-p                    Rename the pane
+  <prefix> e                      Open the scrollback in an editor
 
-Workspaces and agents
-<prefix> w opens workspace navigation (Esc leaves)
-<prefix> g opens the goto picker: every agent/terminal. / search, b/w/i/d filter blocked/working/idle/done, a all
-<prefix> b toggles the sidebar (spaces and agents panel)
-<prefix> o jumps to the latest notification's pane
-<prefix> S-n new workspace, <prefix> S-w rename, <prefix> S-d close
-<prefix> S-g new git worktree workspace
+COPY MODE
+  <prefix> [                      Enter copy mode
+  h/j/k/l, w/b/e, C-u/C-d         Move
+  / or ?                          Search forward / backward (n / N repeat)
+  v or Space                      Start a selection
+  y or Enter                      Copy
+  q or Esc                        Leave copy mode
+  Mouse drag                      Copy without copy mode
 
-Session
-<prefix> q detaches. The server and agents keep running
-<prefix> S-r reloads config. <prefix> s opens settings
-herdr                                   launch or attach
-herdr --remote desk --remote-keybindings server   attach from the laptop (server keys and plugins)
-herdr session list / herdr session attach <name>
-herdr server stop                       ends the session and stops all panes
+TABS
+  <prefix> c                      New tab
+  <prefix> S-t                    Rename the tab
+  <prefix> S-x                    Close the tab
+  <prefix> n / <prefix> p         Next / previous tab
+  <prefix> 1..9                   Jump to a tab
 
-Drive other agents (IDs come from JSON output, never from sidebar order)
-herdr pane current / herdr pane list / herdr agent list
-herdr pane split --current --direction right --no-focus
-herdr pane run <pane> "<command>"       sends text and Enter
-herdr pane read <pane> --lines 50
-herdr pane wait-output <pane> --match "done" --timeout 60000
-herdr agent start <name> --kind claude --pane <pane>     kinds include kiro, codex, claude, pi
-herdr agent prompt <agent> "<text>" --wait --timeout 600000
-herdr agent wait <agent> --until idle
-herdr agent read <agent> --lines 80
-herdr agent send-keys <agent> esc
-herdr agent attach <agent>
+WORKSPACES AND AGENTS
+  <prefix> w                      Workspace navigation (Esc leaves)
+  <prefix> g                      Goto picker for every agent and terminal (/ search;
+                                  b/w/i/d filter blocked/working/idle/done; a all)
+  <prefix> b                      Toggle the sidebar (spaces and agents panel)
+  <prefix> o                      Jump to the pane of the latest notification
+  <prefix> S-n                    New workspace
+  <prefix> S-w                    Rename the workspace
+  <prefix> S-d                    Close the workspace
+  <prefix> S-g                    New git worktree workspace
 
-Liaison pattern (one agent drives others with the herdr skill)
-Start the liaison agent inside a herdr pane (the skill checks HERDR_ENV=1)
-Name herdr in the prompt or the skill does not load, for example:
-  "Use herdr to start a claude reviewer in a pane to the right and give it this task: ..."
-A blocked worker waits at an approval prompt. The liaison asks you; answer in that pane
-<prefix> g then b lists blocked agents
-After a timeout or agent_prompt_stalled, check `herdr agent read` before resending
+SESSION
+  <prefix> q                      Detach. The server and agents keep running
+  <prefix> S-r                    Reload config
+  <prefix> s                      Open settings
+  herdr                           Launch or attach
+  herdr --remote desk --remote-keybindings server
+                                  Attach from the laptop (server keys and plugins)
+  herdr session list / herdr session attach <name>
+                                  List / attach sessions
+  herdr server stop               End the session and stop all panes
+
+DRIVE OTHER AGENTS
+Read IDs from the JSON output. Never derive them from sidebar order.
+
+  herdr pane current | herdr pane list | herdr agent list
+  herdr pane split --current --direction right --no-focus
+  herdr pane run <pane> "<command>"   # sends text and Enter
+  herdr pane read <pane> --lines 50
+  herdr pane wait-output <pane> --match "done" --timeout 60000
+  herdr agent start <name> --kind claude --pane <pane>   # kinds include kiro, codex, claude, pi
+  herdr agent prompt <agent> "<text>" --wait --timeout 600000
+  herdr agent wait <agent> --until idle
+  herdr agent read <agent> --lines 80
+  herdr agent send-keys <agent> esc
+  herdr agent attach <agent>
+
+LIAISON PATTERN
+One agent drives others with the herdr skill.
+
+  Start the liaison agent inside a herdr pane. The skill checks HERDR_ENV=1.
+  Name herdr in the prompt, or the skill does not load. Example: "Use herdr to start a
+    claude reviewer in a pane to the right and give it this task: ..."
+  A blocked worker waits at an approval prompt. The liaison asks you. Answer in that pane.
+  <prefix> g then b               List blocked agents
+  After a timeout or agent_prompt_stalled, check herdr agent read before you resend.

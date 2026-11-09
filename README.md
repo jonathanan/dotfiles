@@ -37,7 +37,7 @@ the herdr skill (`herdr --skill`) for Claude Code, kiro and Codex. Run it after 
 ```
 AGENTS.md       Notes for agents that edit this repo
 agents/         Shared agent instructions for all projects (AGENTS.md)
-bin/            Scripts (agents-sync, claude-statusline, herdr-config-sync, sync-forks)
+bin/            Scripts on PATH (agents-sync, cheat-pager, claude-statusline, herdr-config-sync, sync-forks)
 cheat/          Cheatsheets. View with `cheat <name>`, list with `cheat -l`
 git/            Shared git config and global gitignore
 herdr/          Shared herdr config (see herdr-config-sync)
