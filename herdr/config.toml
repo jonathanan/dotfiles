@@ -1,0 +1,7 @@
+# Shared herdr config. bin/herdr-config-sync writes ~/.config/herdr/config.toml
+# from this file plus ~/.config/herdr/config.local.toml (machine-specific, optional).
+
+onboarding = false
+
+[ui.toast]
+delivery = "terminal"

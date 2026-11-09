@@ -63,4 +63,7 @@ fi
 message "Syncing agent instructions"
 "$DOTFILES/bin/agents-sync"
 
+message "Writing herdr config"
+"$DOTFILES/bin/herdr-config-sync"
+
 message "Done. Start a new shell."

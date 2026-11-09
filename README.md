@@ -24,6 +24,9 @@ These files are local stubs, not symlinks, so the edits do not land in this repo
 | `~/.zshenv` | `zsh/zshenv` | lines that installers append |
 | `~/.gitconfig` | `git/gitconfig` (`[include]`) | `user.email`, other local settings |
 
+herdr: `bin/herdr-config-sync` writes `~/.config/herdr/config.toml` from
+`herdr/config.toml` plus an optional local `~/.config/herdr/config.local.toml`.
+
 Agent instructions: `agents/AGENTS.md` holds shared rules. Put local rules in
 `~/.agents-local/*.md`, then run `bin/agents-sync` to write `~/.codex/AGENTS.md`
 and, if it does not exist, a `~/.claude/CLAUDE.md` that imports both.
@@ -33,8 +36,9 @@ and, if it does not exist, a `~/.claude/CLAUDE.md` that imports both.
 ```
 AGENTS.md       Notes for agents that edit this repo
 agents/         Shared agent instructions for all projects (AGENTS.md)
-bin/            Scripts (agents-sync, claude-statusline, sync-forks)
+bin/            Scripts (agents-sync, claude-statusline, herdr-config-sync, sync-forks)
 git/            Shared git config and global gitignore
+herdr/          Shared herdr config (see herdr-config-sync)
 lib/            Bootstrap helpers
 link/           Symlinked to ~/.<name>; link/config/<app>/<file> to ~/.config/<app>/<file>
 macos/          macOS only: Brewfile, WezTerm, tmux
