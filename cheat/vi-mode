@@ -4,12 +4,13 @@ History
 -------
 - `ctrl-p` : Previous command in history
 - `ctrl-n` : Next command in history
-- `/`      : Search backward in history
+- `/`      : Search backward in history (normal mode)
+- `ctrl-r` : Fuzzy search history with fzf (insert mode)
 - `n`      : Repeat the last `/`
 
 Vim edition
 -----------
-- `v`   : Edit current command line in Vim
+- `vv`  : Edit current command line in $EDITOR (normal mode)
 
 Movement
 --------

@@ -1,0 +1,22 @@
+Status
+------
+- `mise ls`            : Installed and active tools (`-m` missing, `-c` current)
+- `mise outdated`      : Tools with newer versions
+- `mise doctor`        : Check the install
+- `mise which <bin>` / `mise where <tool>` : Path of a tool
+
+Install and upgrade
+-------------------
+- `mise install`       : Install everything in config.toml
+- `mise upgrade`       : Upgrade all tools (`-i` pick, `-n` dry run)
+- `mise upgrade <tool> --bump` : Upgrade and write the new version to config
+- `mise use <tool>@<ver>` : Add to ./mise.toml in this directory
+- `mise use -g <tool>` : Add to the global config (this repo's link/config/mise/config.toml)
+- `mise x <tool>@<ver> -- <cmd>` : Run once without installing into config
+- `mise self-update`   : Update mise
+
+Find and clean
+--------------
+- `mise search <name>` / `mise registry` : Find a tool
+- `mise ls-remote <tool>` : Versions available
+- `mise prune -n` then `mise prune` : Delete unused versions

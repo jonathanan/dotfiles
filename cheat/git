@@ -1,0 +1,17 @@
+- `g la`     : List all aliases
+- `g s`      : status
+- `g cim "msg"` : commit -m        `g ac "msg"` : add . and commit -am
+- `g cob x`  : checkout -b x       `g brD x` : branch -D x
+- `g d` / `g dc` : diff / diff --cached
+- `g dlc`    : diff of the last commit (--cached HEAD^)
+- `g dr <sha>` : diff of one commit
+- `g lg`     : log --oneline --graph
+- `g ls` / `g ll` : log one line / with file stats
+- `g ld` / `g lds` : log with relative / short dates
+- `g r1` / `g rh1` : reset HEAD^ (soft) / --hard
+- `g assume <f>` / `g unassume <f>` / `g assumed` : hide local edits to tracked files
+- `g publish` : push -u origin <current branch>
+- `g unpublish` : delete the remote copy of the current branch
+- `g delete-untracked-branches` : fetch and prune origin
+- `gh:user/repo` : URL shorthand for https://github.com/user/repo
+- `gr`       : cd to the repo root (zsh alias)

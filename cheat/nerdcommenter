@@ -1,3 +1,6 @@
+`=` (normal and visual mode)
+Toggles comments. Custom mapping for `<leader>c<space>` in vimrc.
+
 `[count]<leader>cc` |NERDComComment|
 Comment out the current line or text selected in visual mode.
 

@@ -1,3 +1,5 @@
+macOS only. Prefix is C-Space (macos/tmux.conf.local). herdr replaces tmux on Linux.
+
 <prefix> C-c creates a new session
 <prefix> e opens ~/.tmux.conf.local with the editor defined by the $EDITOR environment variable (defaults to vim when empty)
 <prefix> r reloads the configuration

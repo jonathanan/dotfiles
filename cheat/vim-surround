@@ -48,5 +48,4 @@ visual mode) followed by `S<p class=important">`.
       <em>Hello</em> world!
     </p>
 
-The `.` command will work with `ds`, `cs`, and `yss` if you install
-[repeat.vim](https://github.com/tpope/vim-repeat).
+The `.` command repeats `ds`, `cs`, and `yss` (vim-repeat is installed).

@@ -1,0 +1,29 @@
+Setup
+-----
+- `~/.dotfiles/bootstrap.sh`            : Link files, write stubs, sync agents and herdr
+- `~/.dotfiles/bootstrap.sh --packages` : Also Brewfile (macOS) and `mise install`
+- Replaced files are kept as `<file>.bak.<timestamp>`
+
+Scripts (not on PATH, run as $DOTFILES/bin/<name>)
+--------------------------------------------------
+- `agents-sync`       : Write ~/.codex/AGENTS.md; create ~/.claude/CLAUDE.md import stub
+- `herdr-config-sync` : Write ~/.config/herdr/config.toml and reload the herdr server
+- `claude-statusline` : Claude Code status line (model, context %)
+- `sync-forks`        : Rebase my forks on upstream
+
+Cheatsheets
+-----------
+- `cheat <name>` / `cheat -l` : Show a sheet / list sheets (`cheat/` in this repo)
+- `cheat -e <name>`  : Edit or create a sheet
+
+Where local config goes
+-----------------------
+- `~/.zshrc.local`, `~/.zshrc`, `~/.zshenv` : Machine zsh config (stubs source the repo)
+- `~/.gitconfig`      : user.email and machine git settings
+- `~/.vimrc.local`    : Machine vim/nvim config
+- `~/.config/herdr/config.local.toml` : Then run herdr-config-sync
+- `~/.agents-local/*.md` : Then run agents-sync
+
+Aliases
+-------
+- `cd-dotfiles`, `zshconfig`, `zshsource`, `gitconfig`

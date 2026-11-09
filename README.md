@@ -37,6 +37,7 @@ and, if it does not exist, a `~/.claude/CLAUDE.md` that imports both.
 AGENTS.md       Notes for agents that edit this repo
 agents/         Shared agent instructions for all projects (AGENTS.md)
 bin/            Scripts (agents-sync, claude-statusline, herdr-config-sync, sync-forks)
+cheat/          Cheatsheets. View with `cheat <name>`, list with `cheat -l`
 git/            Shared git config and global gitignore
 herdr/          Shared herdr config (see herdr-config-sync)
 lib/            Bootstrap helpers
@@ -47,6 +48,6 @@ zsh/            Shared zsh config and antidote plugin list
 bootstrap.sh    Link everything and write local stubs
 ```
 
-Tools shared by macOS and Linux (node, python, fzf, fd, ripgrep, bat, herdr)
+Tools shared by macOS and Linux (node, python, fzf, fd, ripgrep, bat, cheat, herdr)
 come from mise: `link/config/mise/config.toml`. neovim comes from mise on Linux
 and from Homebrew on macOS.

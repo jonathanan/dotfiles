@@ -1,0 +1,13 @@
+# cheat (https://github.com/cheat/cheat) config. View a sheet with: cheat <name>
+# To add sheets from another directory, point CHEAT_CONFIG_PATH at a config
+# that lists this cheatpath plus the other one.
+editor: nvim
+colorize: false
+style: monokai
+formatter: terminal256
+pager: less -FRX
+cheatpaths:
+  - name: personal
+    path: ~/.dotfiles/cheat
+    tags: [personal]
+    readonly: false
