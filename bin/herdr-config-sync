@@ -34,6 +34,11 @@ chmod 600 "$tmp"
 mv "$tmp" "$out"
 echo ">> Wrote: $out"
 
-if command -v herdr >/dev/null 2>&1 && herdr status >/dev/null 2>&1; then
-  herdr server reload-config >/dev/null && echo ">> Reloaded the running herdr server"
+# Reload a running server. No server running (for example on a thin client) is fine.
+if command -v herdr >/dev/null 2>&1; then
+  if herdr server reload-config >/dev/null 2>&1; then
+    echo ">> Reloaded the running herdr server"
+  else
+    echo ">> No local herdr server reloaded. It reads the new config when it starts."
+  fi
 fi
