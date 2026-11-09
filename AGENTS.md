@@ -6,7 +6,7 @@ Deliberate decisions in this repo. Do not revert them without asking:
 - `link/config/<app>/<file>` links single files, not directories, because apps keep sockets and logs next to their config.
 - This repo is public. Never commit anything specific to one machine, host names, email addresses or credentials. Those belong in `~/.zshrc.local`, `~/.gitconfig` or `~/.agents-local/`.
 - `macos/Brewfile` lists wanted packages. Do not add `brew bundle cleanup`: it uninstalls every package that is not listed.
-- On Linux, neovim comes from `github:neovim/neovim-releases` because the official build needs glibc 2.32 or later.
+- neovim: Homebrew on macOS, `github:neovim/neovim-releases` (mise) on Linux, because the official Linux build needs glibc 2.32 or later. A mise entry limited to macOS still resolves versions on Linux and warns.
 
 ## Maintaining this file
 

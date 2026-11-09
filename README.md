@@ -43,5 +43,6 @@ zsh/            Shared zsh config and antidote plugin list
 bootstrap.sh    Link everything and write local stubs
 ```
 
-Tools shared by macOS and Linux (node, python, fzf, fd, ripgrep, bat, neovim,
-herdr) come from mise: `link/config/mise/config.toml`.
+Tools shared by macOS and Linux (node, python, fzf, fd, ripgrep, bat, herdr)
+come from mise: `link/config/mise/config.toml`. neovim comes from mise on Linux
+and from Homebrew on macOS.

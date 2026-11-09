@@ -9,6 +9,6 @@ fzf = "latest"
 fd = "latest"
 ripgrep = "latest"
 bat = "latest"
-neovim = { version = "latest", os = ["macos"] }
-# Official Linux builds need glibc 2.32+. neovim-releases also runs on older glibc (Amazon Linux 2).
+# Linux only. Official Linux builds need glibc 2.32+; neovim-releases also runs on older glibc.
+# macOS gets neovim from macos/Brewfile.
 "github:neovim/neovim-releases" = { version = "latest", os = ["linux"] }

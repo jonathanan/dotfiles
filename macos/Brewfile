@@ -1,5 +1,5 @@
 # macOS packages. Install with: brew bundle --file ~/.dotfiles/macos/Brewfile
-# CLI tools shared with Linux (node, python, fzf, fd, ripgrep, bat, neovim, herdr)
+# CLI tools shared with Linux (node, python, fzf, fd, ripgrep, bat, herdr)
 # come from mise. See link/config/mise/config.toml.
 
 brew "mise"
@@ -10,6 +10,7 @@ brew "gh"
 brew "pre-commit"
 brew "coreutils"
 brew "jq"      # bin/claude-statusline
+brew "neovim"
 brew "tmux"
 brew "fpp"     # tmux-fpp
 brew "urlview" # tmux-urlview
