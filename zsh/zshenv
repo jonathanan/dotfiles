@@ -9,3 +9,9 @@ fi
 if [[ -d $HOME/.local/share/mise/shims ]]; then
   path=("$HOME/.local/share/mise/shims" $path)
 fi
+
+# lavish-axi: no telemetry, no publishing to its third-party share host, loopback only.
+# Set here (not in zshrc) so agents' non-interactive shells get it too.
+export LAVISH_AXI_TELEMETRY=0
+export LAVISH_AXI_HTML_APP_API_URL=http://127.0.0.1:9
+export LAVISH_AXI_HOST=127.0.0.1
