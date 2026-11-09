@@ -24,7 +24,7 @@
     ac = !git add . && git commit -am
     co = checkout
     cob = checkout -b
-    com = checkout master
+    com = "!git checkout \"$(git default-branch)\""
     br = branch
     brD = branch -D
     cp = cherry-pick
@@ -67,6 +67,10 @@
     # Assume all
     assumeall = "!git s -s | awk {'print $2'} | xargs git assume"
 
+    # Default branch of origin (master, main, mainline, ...); falls back to master.
+    # Run `git remote set-head origin --auto` once if origin/HEAD is missing.
+    default-branch = "!b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null) && echo \"${b#origin/}\" || echo master"
+
     # Get the current branch name (not so useful in itself, but used in other aliases)
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     # Push the current branch to the remote "origin", and set it to track the upstream branch
@@ -75,7 +79,7 @@
     unpublish = "!git push origin :$(git branch-name)"
 
     # Use your difftool with all the changes that are on the current branch
-    code-review = difftool origin/master
+    code-review = "!git difftool \"origin/$(git default-branch)\""
 
     # merge
     # Given a merge commit, find the span of commits that exist(ed) on that
@@ -89,7 +93,7 @@
     merge-difftool = "!git difftool `git merge-span ... $1`"
 
     # Delete any branches that have been merged into master
-    delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    delete-merged-branches = "!git checkout \"$(git default-branch)\" && git branch --merged | grep -v '^\\*' | while read -r b; do git branch -d \"$b\"; done"
     # Prune obsolete remote tracking branches. These are branches that we once tracked, but have since been deleted on the remote.
     delete-untracked-branches = "!git fetch && git remote prune origin"
 

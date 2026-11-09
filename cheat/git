@@ -2,6 +2,8 @@
 - `g s`      : status
 - `g cim "msg"` : commit -m        `g ac "msg"` : add . and commit -am
 - `g cob x`  : checkout -b x       `g brD x` : branch -D x
+- `g com`    : checkout the default branch (master, main, mainline from origin/HEAD)
+- `g default-branch` : print it (`git remote set-head origin --auto` if wrong)
 - `g d` / `g dc` : diff / diff --cached
 - `g dlc`    : diff of the last commit (--cached HEAD^)
 - `g dr <sha>` : diff of one commit
@@ -13,5 +15,7 @@
 - `g publish` : push -u origin <current branch>
 - `g unpublish` : delete the remote copy of the current branch
 - `g delete-untracked-branches` : fetch and prune origin
+- `g delete-merged-branches` : checkout default branch, delete branches merged into it
+- `g code-review` : difftool against origin/<default branch>
 - `gh:user/repo` : URL shorthand for https://github.com/user/repo
 - `gr`       : cd to the repo root (zsh alias)
