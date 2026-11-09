@@ -1,0 +1,36 @@
+herdr guide 4: config and upkeep
+================================
+
+After herdr-3-agents. Change keys and settings, and upgrade herdr.
+
+WHERE CONFIG LIVES
+  ~/.dotfiles/herdr/config.toml   Shared settings (this repo)
+  ~/.config/herdr/config.local.toml
+                                  Settings for this machine only (not in this repo)
+  ~/.config/herdr/config.toml     Generated from the two files above. Do not edit
+  herdr-config-sync               Write the generated file and reload the running server
+  herdr --default-config          Print every setting and default key, with comments
+
+CHANGE A KEY
+  1. Find the action name in herdr --default-config, for example rename_pane =
+     "prefix+shift+p".
+  2. Add the line under [keys] in the shared or local file.
+  3. Run herdr-config-sync.
+  4. Check for clashes first: grep the default config for the new key.
+
+CUSTOM COMMAND KEYS
+  [[keys.command]]
+  key = "prefix+alt+g"
+  type = "popup"   # popup: modal terminal; pane: temporary pane; shell: runs in background
+  command = "lazygit"
+  width = "80%"
+  height = "80%"
+
+UPGRADE
+  mise upgrade herdr              Install the new version
+  herdr server stop               Restart the server on the new version (closes panes; a
+                                  service manager starts it again)
+  herdr status                    Check that client and server versions match and are
+                                  compatible
+  agents-sync                     Refresh the herdr skill for agents
+  Upgrade the laptop too. herdr --remote needs matching protocols on both sides

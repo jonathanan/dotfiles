@@ -1,0 +1,45 @@
+herdr guide 1: basics
+=====================
+
+Start here. Then read herdr-2-panes, herdr-3-agents and herdr-4-config.
+
+CONCEPTS
+  herdr is a terminal multiplexer for agents. A server holds the terminals, so they keep
+    running when you disconnect.
+  Layout: workspace (one per task) > tabs > panes (terminals).
+  The sidebar shows each agent's state: working, blocked, idle or done.
+  Every key starts with the prefix C-b: press it, release it, then press the key.
+
+CONNECT AND LEAVE
+  WezTerm cmd-shift-d       Open a herdr tab on the remote host (macOS)
+  herdr --remote <host> --remote-keybindings server
+                            Attach from the laptop (the flag sends keys to plugins on the
+                            server)
+  herdr                     Attach on the host itself
+  <prefix> q                Detach. The server and agents keep running
+  herdr server stop         Do not use to leave: it closes every pane
+
+THE KEYS TO LEARN FIRST
+  <prefix> ?                Show every key (/ searches). Use it when you forget a key
+  <prefix> v / <prefix> -   Split the pane right / down
+  <prefix> h/j/k/l          Move focus left/down/up/right
+  <prefix> z                Zoom the pane (press again to unzoom)
+  <prefix> x                Close the pane
+  <prefix> c                New tab
+  <prefix> n / <prefix> p / <prefix> 1..9
+                            Next / previous / numbered tab
+  <prefix> w                Workspace navigation (Esc leaves)
+  <prefix> S-n              New workspace
+  <prefix> g                Jump to any agent or terminal
+  <prefix> b                Show or hide the sidebar
+  <prefix> o                Jump to the pane of the latest notification
+
+DAILY LOOP
+  1. Attach. Your workspaces are where you left them.
+  2. Open a workspace per task (<prefix> S-n), with an agent pane and a shell pane
+     (<prefix> -).
+  3. Switch tasks with <prefix> w. A toast and a beep tell you when a background agent
+     finishes or blocks.
+  4. Press <prefix> o to go to that agent. A blocked agent waits for your answer in its
+     pane.
+  5. Detach with <prefix> q.

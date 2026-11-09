@@ -1,0 +1,43 @@
+herdr guide 2: panes, tabs and copy mode
+========================================
+
+After herdr-1-basics. Day-to-day editing of the layout.
+
+PANES
+  <prefix> S-h/j/k/l              Swap the pane left/down/up/right
+  <prefix> r                      Resize mode (follow the hints on screen)
+  <prefix> tab / <prefix> S-tab   Cycle panes
+  <prefix> S-p                    Rename the pane
+  <prefix> e                      Open the scrollback in $EDITOR (search and copy long
+                                  output there)
+
+TABS AND WORKSPACES
+  <prefix> S-t                    Rename the tab
+  <prefix> S-x                    Close the tab
+  <prefix> S-w                    Rename the workspace
+  <prefix> S-d                    Close the workspace
+  <prefix> S-g                    New git worktree workspace
+
+COPY MODE
+  <prefix> [                      Enter copy mode. Output stays live while you scroll
+  h/j/k/l, w/b/e, W/B/E           Move
+  C-u / C-d                       Half page up / down
+  PageUp / PageDown               Page up / down (C-b is the prefix, so it does not page up)
+  / or ?                          Search forward / backward, then n / N to repeat
+  v or Space                      Start a selection
+  y or Enter                      Copy and leave
+  q or Esc                        Leave without copying
+  Mouse drag                      Copy without copy mode
+
+GOTO PICKER (<PREFIX> G)
+  /                               Search names, agent kinds, tabs, workspaces, branches,
+                                  paths
+  j/k or Up/Down                  Move between rows
+  Left/Right                      Previous / next workspace section
+  b/w/i/d                         Show only blocked / working / idle / done agents
+  a                               Show all terminals again
+  Enter                           Jump to the row
+
+SETTINGS
+  <prefix> s                      Open settings
+  <prefix> S-r                    Reload config

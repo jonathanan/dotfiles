@@ -1,6 +1,8 @@
 herdr
 =====
 
+Guides: herdr-1-basics, herdr-2-panes, herdr-3-agents, herdr-4-config.
+
 herdr 0.9.5. The prefix is C-b. <prefix> c means: press C-b, release, then press c.
 
   <prefix> ?                      Show every active binding (/ filters)

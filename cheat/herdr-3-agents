@@ -1,0 +1,41 @@
+herdr guide 3: agents
+=====================
+
+After herdr-2-panes. Run several agents, find the ones that need you, and let one agent
+drive others.
+
+WATCH MANY AGENTS
+  <prefix> g then b   List blocked agents (waiting at an approval or a question)
+  <prefix> o          Jump to the latest notification
+  A blocked agent does nothing until you answer in its pane. Answer it yourself. Do not let
+    another agent approve for you.
+  After a server restart, agents with a herdr integration resume by themselves. Check with:
+    herdr integration status
+
+START AND STEER AN AGENT FROM THE SHELL
+  herdr pane split --current --direction right --no-focus   # read the pane id from the JSON
+  herdr agent start reviewer --kind claude --pane <pane>   # kinds include kiro, claude, codex
+  herdr agent prompt reviewer "<task>" --wait --timeout 600000
+  herdr agent read reviewer --lines 80
+  herdr agent get reviewer   # state: idle, working, blocked, done
+  herdr agent send-keys reviewer esc
+  herdr agent attach reviewer
+  herdr agent list
+
+ONE AGENT DRIVES OTHERS (LIAISON PATTERN)
+  1. Start the liaison agent inside a herdr pane. The herdr skill needs HERDR_ENV=1.
+  2. Name herdr in the prompt, or the skill does not load. Example: "Use herdr to start a
+     claude reviewer in a pane to the right and give it this task: ..."
+  3. Ask it to have each worker write its result to a file, and to name each worker.
+  4. Ask it to report blocked workers to you, not to answer them.
+  5. Watch the workers in their panes. Take over any pane at any time.
+
+RULES FOR THE LIAISON BRIEF
+  Use --no-focus, so your focus stays where it is
+  Read pane and agent ids from the JSON output, never from sidebar order
+  After a timeout or agent_prompt_stalled, read the agent before you resend
+  Never close panes it did not create
+
+REFRESH THE HERDR SKILL AFTER AN UPGRADE
+  agents-sync         Rewrite the herdr skill for Claude Code, kiro and Codex from herdr
+                      --skill
