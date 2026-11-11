@@ -22,6 +22,7 @@
 - Never run `git push`, `git push --force`, or create or publish a code review without explicit confirmation.
 - Show the diff or commit and ask before any remote operation. Local commits are OK when requested.
 - Ask before hard-to-reverse actions: deletes, sends, deploys, permission changes.
+- A report, diagnosis or recommendation does not authorize a code change. Wait for the request.
 - Before you start many sub-agents or parallel workers at once, explain the tradeoffs and ask for approval.
 
 ## Writing
