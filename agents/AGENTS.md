@@ -11,6 +11,7 @@
 ## Engineering
 
 - Prefer quality, simplicity, robustness and long-term maintainability over low development cost.
+- Prefer a static value over a new config parameter when the value does not need runtime tuning.
 - For one-off or infrequent operational work, start with the simplest direct end-to-end path. Add wrappers, automation or verifiers only when the direct path shows a concrete blocker or a repeated need.
 - For a bug fix, first reproduce the bug end to end, as close as possible to how a user sees it. Then fix the real cause.
 - Fix lint errors, test failures and flaky tests that you see, even when your change did not cause them. Tell me what you fixed.
@@ -27,7 +28,7 @@
 
 - Use Simplified Technical English: short sentences, active voice, simple present tense, one instruction per sentence, one term per concept.
 - Do not use em dashes. Use periods, commas, colons or parentheses.
-- Keep commit messages and review descriptions short: a summary, plus testing only when it goes beyond the normal build.
+- Keep commit messages short. For review descriptions, follow the review description skill when one is installed.
 - Never add an agent name as a co-author in commit messages.
 
 ## Maintaining this file
