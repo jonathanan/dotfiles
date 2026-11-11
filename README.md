@@ -30,7 +30,10 @@ herdr: `bin/herdr-config-sync` writes `~/.config/herdr/config.toml` from
 Agent instructions: `agents/AGENTS.md` holds shared rules. Put local rules in
 `~/.agents-local/*.md`, then run `bin/agents-sync` to write `~/.codex/AGENTS.md`
 and, if it does not exist, a `~/.claude/CLAUDE.md` that imports both. It also refreshes
-the herdr skill (`herdr --skill`) for Claude Code, kiro and Codex. Run it after upgrading herdr.
+the herdr skill (`herdr --skill`) for Claude Code, kiro and Codex, and links each Claude Code
+skill into `~/.agents/skills` for Codex. It skips skills that use Claude-only frontmatter or
+tools; override with skill names in `~/.agents-local/codex-skip` or `codex-allow`. `zsh/zshrc`
+reruns it in the background when a skill is added or removed, or herdr changes.
 
 ## Project Structure
 

@@ -21,6 +21,15 @@ if (( $+commands[mise] )); then
   eval "$(mise activate zsh)"
 fi
 
+# Rerun agents-sync in the background when a skill is added or removed, or herdr changes.
+() {
+  local stamp=${XDG_STATE_HOME:-$HOME/.local/state}/agents-sync.stamp
+  local herdr_bin=${commands[herdr]:A}
+  if [[ ! -e $stamp || $HOME/.claude/skills -nt $stamp || ( -n $herdr_bin && $herdr_bin -nt $stamp ) ]]; then
+    ("$DOTFILES/bin/agents-sync" --quiet >/dev/null 2>&1 &)
+  fi
+}
+
 if [[ -r $HOME/.zshrc.local ]]; then
   source "$HOME/.zshrc.local"
 fi
