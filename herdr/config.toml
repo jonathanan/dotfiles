@@ -7,3 +7,10 @@ onboarding = false
 # not reach the terminal through herdr --remote.
 [ui.toast]
 delivery = "herdr"
+
+# Prefix: ctrl+space instead of the default ctrl+b. It frees ctrl+b for shells, editors
+# and copy-mode page-up. On macOS, check that "Select the previous input source"
+# (System Settings > Keyboard > Keyboard Shortcuts > Input Sources) is off, or it takes
+# ctrl+space before the terminal sees it.
+[keys]
+prefix = "ctrl+space"
