@@ -30,6 +30,15 @@ fi
   fi
 }
 
+# Regenerate the herdr config in the background when its shared or local source changes.
+() {
+  local dir=${XDG_CONFIG_HOME:-$HOME/.config}/herdr
+  local out=$dir/config.toml
+  if [[ ! -e $out || $DOTFILES/herdr/config.toml -nt $out || $dir/config.local.toml -nt $out ]]; then
+    ("$DOTFILES/bin/herdr-config-sync" >/dev/null 2>&1 &)
+  fi
+}
+
 if [[ -r $HOME/.zshrc.local ]]; then
   source "$HOME/.zshrc.local"
 fi
