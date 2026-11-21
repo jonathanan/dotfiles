@@ -25,14 +25,28 @@
 - Show the diff or commit and ask before any remote operation. Local commits are OK when requested.
 - Ask before hard-to-reverse actions: deletes, sends, deploys, permission changes.
 - A report, diagnosis or recommendation does not authorize a code change. Wait for the request.
-- Before you start many sub-agents or parallel workers at once, explain the tradeoffs and ask for approval.
 
 ## Writing
 
 - Use Simplified Technical English: short sentences, active voice, simple present tense, one instruction per sentence, one term per concept.
 - Do not use em dashes. Use periods, commas, colons or parentheses.
-- Keep commit messages short. For review descriptions, follow the review description skill when one is installed.
-- Never add an agent name as a co-author in commit messages.
+- Explain as simply and briefly as possible. Lead with the answer.
+- Add a small ASCII diagram when it makes a flow, structure or state change easier to see. Skip it when prose is enough.
+- For review descriptions, follow the review description skill when one is installed.
+
+## Code comments
+
+- Default to no comment. Use clear names and structure instead.
+- Comment only the why of something non-obvious: a constraint, an invariant, an edge case or a deliberate workaround.
+- Do not narrate changes or history, restate the code, add section dividers, or leave commented-out code.
+- Keep each comment short and self-contained. Do not depend on links that can go stale.
+
+## Commit messages
+
+- Subject: imperative, verb first, 50 to 75 characters, no trailing period.
+- Body: after a blank line, 1 to 4 lines on why: the problem or requirement and any non-obvious constraint. Do not list the edits.
+- One logical change per commit.
+- Never add an agent name as a co-author.
 
 ## Maintaining this file
 
