@@ -3,7 +3,7 @@
 #   Public:  $DOTFILES/agents/AGENTS.md
 #   Local:   ~/.agents-local/*.md (optional, machine or employer specific, not in this repo)
 # Writes ~/.codex/AGENTS.md and ~/.kiro/steering/agents.md.
-# Also refreshes the herdr skill and links Claude Code skills for Codex.
+# Also refreshes the herdr, hc and herdr-app skills and links Claude Code skills for Codex.
 # --quiet prints nothing. zsh/zshrc runs it that way when skills or herdr change.
 set -euo pipefail
 
@@ -68,27 +68,43 @@ if [[ -d $HOME/.claude ]]; then
   fi
 fi
 
-# herdr skill: the herdr binary prints its own skill (`herdr --skill`), so the copy
-# always matches the installed version. Refresh it for each harness that is present.
-herdr_bin=$(command -v herdr || true)
-for candidate in "$HOME/.local/share/mise/installs/herdr/latest/herdr" "$HOME/.local/share/mise/shims/herdr"; do
-  [[ -z $herdr_bin && -x $candidate ]] && herdr_bin=$candidate
-done
-if [[ -n $herdr_bin ]] && skill=$("$herdr_bin" --skill 2>/dev/null) && [[ $skill == ---* ]]; then
+# Tool skills: herdr, hc (herdr-core) and herdr-app print their own manual (`<tool> --skill`),
+# so the copy always matches the installed version. Refresh it for each harness that is
+# present. A manual without frontmatter gets one, so harnesses can list it.
+write_skill() { # <skill-name> <content>
+  local dir out
   for dir in "$HOME/.claude" "$HOME/.kiro" "$HOME/.codex"; do
     [[ -d $dir ]] || continue
-    out="$dir/skills/herdr/SKILL.md"
-    if [[ -f $out ]] && [[ "$(cat "$out")" == "$skill" ]]; then
+    out="$dir/skills/$1/SKILL.md"
+    if [[ -f $out ]] && [[ "$(cat "$out")" == "$2" ]]; then
       say ">> Ok: $out"
     else
       mkdir -p "$(dirname "$out")"
-      printf '%s\n' "$skill" >"$out"
+      printf '%s\n' "$2" >"$out"
       say ">> Wrote: $out"
     fi
   done
-else
-  say ">> Skip: herdr skill (herdr not found)"
-fi
+}
+sync_tool_skill() { # <skill-name> <description> <binary candidates...>
+  local name=$1 desc=$2 bin= c skill
+  shift 2
+  for c in "$@"; do
+    [[ -z $bin && -n $c && -x $c ]] && bin=$c
+  done
+  if [[ -z $bin ]] || ! skill=$("$bin" --skill 2>/dev/null) || [[ -z $skill ]]; then
+    say ">> Skip: $name skill ($name not found)"
+    return
+  fi
+  [[ $skill == ---* ]] || skill=$(printf -- '---\nname: %s\ndescription: %s\n---\n\n%s' "$name" "$desc" "$skill")
+  write_skill "$name" "$skill"
+}
+sync_tool_skill herdr "Drive the herdr terminal multiplexer." \
+  "$(command -v herdr || true)" "$HOME/.local/share/mise/installs/herdr/latest/herdr" \
+  "$HOME/.local/share/mise/shims/herdr"
+sync_tool_skill hc "Manual for hc (herdr-core): run programs and agents in persistent terminals, delegate to child agents, send, read and wait. Use when HC_TERMINAL_ID is set or the user mentions hc or herdr-core." \
+  "$(command -v hc || true)" "$HOME/.local/bin/hc"
+sync_tool_skill herdr-app "Manual for herdr-app (Herdr.app): spaces, tabs, layouts, keys and mods. Use when the user mentions herdr-app or Herdr.app." \
+  "$(command -v herdr-app || true)" "$HOME/.local/bin/herdr-app"
 
 # Codex skills: link each Claude Code skill into ~/.agents/skills, which Codex reads.
 # Links follow updates to the skill in place. Skills that use Claude-only features are
