@@ -1,0 +1,5 @@
+{
+  "global": { "ctrl-space": "mod.open:tmux-prefix" },
+  "terminal": { "ctrl-space": "mod.open:tmux-prefix" },
+  "mod:tmux-prefix": { "ctrl-space": "tmux-prefix.send-prefix" }
+}

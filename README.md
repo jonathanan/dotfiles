@@ -24,8 +24,13 @@ These files are local stubs, not symlinks, so the edits do not land in this repo
 | `~/.zshenv` | `zsh/zshenv` | lines that installers append |
 | `~/.gitconfig` | `git/gitconfig` (`[include]`) | `user.email`, other local settings |
 
-herdr: `bin/herdr-config-sync` writes `~/.config/herdr/config.toml` from
+herdr (TUI): `bin/herdr-config-sync` writes `~/.config/herdr/config.toml` from
 `herdr/config.toml` plus an optional local `~/.config/herdr/config.local.toml`.
+
+herdr-app (desktop): `bin/herdr-app-sync` copies custom mods from `herdr-app/mods/`
+into `~/.config/herdr-app/mods/` and merges key bindings from `herdr-app/keys.json`
+into the live `~/.config/herdr-app/keys.json`. Existing bindings are never removed.
+Backups go to `~/.local/state/herdr-app-aside/`.
 
 Agent instructions: `agents/AGENTS.md` holds shared rules. Put local rules in
 `~/.agents-local/*.md`, then run `bin/agents-sync` to write `~/.codex/AGENTS.md`,
@@ -40,10 +45,11 @@ reruns it in the background when a skill is added or removed, or herdr or hc cha
 ```
 AGENTS.md       Notes for agents that edit this repo
 agents/         Shared agent instructions for all projects (AGENTS.md)
-bin/            Scripts on PATH (agents-sync, cheat-pager, claude-statusline, herdr-config-sync, sync-forks)
+bin/            Scripts on PATH (agents-sync, cheat-pager, claude-statusline, herdr-app-sync, herdr-config-sync, sync-forks)
 cheat/          Cheatsheets. View with `cheat <name>`, list with `cheat -l`
 git/            Shared git config and global gitignore
-herdr/          Shared herdr config (see herdr-config-sync)
+herdr/          Shared herdr TUI config (see herdr-config-sync)
+herdr-app/      Shared herdr-app mods and key bindings (see herdr-app-sync)
 lib/            Bootstrap helpers
 link/           Symlinked to ~/.<name>; link/config/<app>/<file> to ~/.config/<app>/<file>
 macos/          macOS only: Brewfile, WezTerm, tmux

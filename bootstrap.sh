@@ -66,4 +66,7 @@ message "Syncing agent instructions"
 message "Writing herdr config"
 "$DOTFILES/bin/herdr-config-sync"
 
+message "Syncing herdr-app mods and keys"
+"$DOTFILES/bin/herdr-app-sync"
+
 message "Done. Start a new shell."

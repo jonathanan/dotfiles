@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# Copy herdr-app mods from this repo into ~/.config/herdr-app and merge key
+# bindings into the live keys.json. Safe to run again.
+set -euo pipefail
+
+DOTFILES="${DOTFILES:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+src="$DOTFILES/herdr-app"
+dst="${XDG_CONFIG_HOME:-$HOME/.config}/herdr-app"
+aside="$HOME/.local/state/herdr-app-aside/sync-$(date -u +%Y%m%dT%H%M%SZ)"
+
+skip_pattern='jsconfig.json|*.d.ts|.*|node_modules'
+
+msg() { printf '>> %s\n' "$1"; }
+
+# back_up <file-or-dir>: move to the aside directory, preserving the relative path.
+back_up() {
+  local path=$1 rel=${1#"$dst/"}
+  mkdir -p "$(dirname "$aside/$rel")"
+  mv "$path" "$aside/$rel"
+  msg "Backed up: $rel  (restore: cp -a '$aside/$rel' '$path')"
+}
+
+# --- Mods -------------------------------------------------------------------
+
+if [[ -d $src/mods ]]; then
+  for mod_src in "$src"/mods/*/; do
+    [[ -d $mod_src ]] || continue
+    name=$(basename "$mod_src")
+    mod_dst="$dst/mods/$name"
+
+    changed=false
+    while IFS= read -r -d '' file; do
+      rel=${file#"$mod_src"}
+      target="$mod_dst/$rel"
+
+      if [[ -f $target ]] && diff -q "$file" "$target" >/dev/null 2>&1; then
+        continue
+      fi
+
+      if [[ -f $target ]]; then
+        back_up "$target"
+      fi
+
+      mkdir -p "$(dirname "$target")"
+      cp "$file" "$target"
+      changed=true
+      msg "Copied: mods/$name/$rel"
+    done < <(find "$mod_src" -type f \
+      ! -name 'jsconfig.json' \
+      ! -name '*.d.ts' \
+      ! -name '.*' \
+      ! -path '*/node_modules/*' \
+      -print0)
+
+    if ! $changed; then
+      msg "Unchanged: mods/$name"
+    fi
+  done
+fi
+
+# --- Keys --------------------------------------------------------------------
+
+repo_keys="$src/keys.json"
+live_keys="$dst/keys.json"
+
+if [[ -f $repo_keys ]]; then
+  if [[ ! -f $live_keys ]]; then
+    cp "$repo_keys" "$live_keys"
+    msg "Created: keys.json"
+  else
+    # Merge: for each section and binding in the repo file, add it to the live
+    # file if missing. Never remove or overwrite existing bindings.
+    merged=$(python3 -c '
+import json, sys
+
+with open(sys.argv[1]) as f:
+    repo = json.load(f)
+with open(sys.argv[2]) as f:
+    live = json.load(f)
+
+changed = False
+for section, bindings in repo.items():
+    if section not in live:
+        live[section] = {}
+    for key, action in bindings.items():
+        if key not in live[section]:
+            live[section][key] = action
+            changed = True
+
+if changed:
+    print(json.dumps(live, indent=2, ensure_ascii=False))
+else:
+    sys.exit(1)
+' "$repo_keys" "$live_keys" 2>&1) || true
+
+    if [[ -n $merged ]]; then
+      back_up "$live_keys"
+      printf '%s\n' "$merged" >"$live_keys"
+      msg "Merged new bindings into keys.json"
+    else
+      msg "Unchanged: keys.json"
+    fi
+  fi
+fi
+
+# --- Check -------------------------------------------------------------------
+
+errors=0
+if command -v herdr-app >/dev/null 2>&1; then
+  if [[ -d $src/mods ]]; then
+    for mod_src in "$src"/mods/*/; do
+      [[ -d $mod_src ]] || continue
+      name=$(basename "$mod_src")
+      if herdr-app check "$dst/mods/$name" 2>&1; then
+        :
+      else
+        msg "FAILED: herdr-app check mods/$name"
+        errors=$((errors + 1))
+      fi
+    done
+  fi
+else
+  msg "herdr-app not found, skipping checks"
+fi
+
+if [[ $errors -gt 0 ]]; then
+  msg "$errors mod(s) failed check"
+  exit 1
+fi
+
+msg "Done"
