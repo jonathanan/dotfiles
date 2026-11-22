@@ -1,0 +1,64 @@
+herdr-app
+=========
+
+macOS app (Herdr.app) that shows spaces, tabs and panes. herdr-core (hc) runs the
+terminals, on this Mac or on a remote machine. Separate from the herdr TUI: they share no
+sessions. Default keys below. Full list: cmd-/ or herdr-app --skill.
+
+SPACES AND TABS
+  cmd-n                           New space
+  cmd-t / cmd-w                   New / close tab
+  ctrl-tab / ctrl-shift-tab       Next / previous tab
+  cmd-shift-] / cmd-shift-[       Next / previous tab
+  cmd-alt-] / cmd-alt-[           Next / previous space
+  f2 / shift-f2                   Rename tab / space
+
+PANES
+  cmd-d / cmd-shift-d             Split right / down
+  cmd-alt-<arrow>                 Focus the pane in that direction
+  cmd-alt-shift-<arrow>           Swap with the pane in that direction
+  cmd-shift-enter                 Zoom the pane
+  cmd-shift-w                     Close the pane
+
+AGENTS AND SEARCH
+  cmd-] / cmd-[                   Next / previous agent
+  cmd-p                           Picker
+  cmd-shift-p                     Command palette (every command, with its key)
+  cmd-f                           Find in the focused terminal
+
+WINDOW
+  cmd-b                           Toggle the sidebar
+  cmd-shift-l                     Switch layout
+  cmd-,                           Settings
+  cmd-/                           Keys and help
+  ctrl-alt-shift-escape           Escape hatch: default layout and keys
+
+REMOTE MACHINES (run on the Mac)
+  hc machine add <ssh-host> --name <name>
+                                  Add a machine. Offers to copy hc there
+  hc machine ls                   Machines and their state
+  hc machine login <name>         Reconnect now (run mwinit first if auth expired)
+  hc machine update <name>        Push a newer hc and restart it. Terminals keep running
+  SSH to the machine must print nothing and must not ask for a PTY.
+
+AGENTS FROM A SCRIPT OR AN AGENT
+  hc run --bg --name <n> <agent> "<task>"
+                                  Start an agent in the background
+  hc send <n> "<text>"            Type into it
+  hc read <n> --lines 60          Read its screen
+  hc wait <n>                     Wait until it is done
+  hc --skill                      Full manual for agents
+  herdr-app do space.new --name <n> --folder <dir>
+                                  Make a space (herdr-app commands lists all)
+  Only agents that report status (Claude, Codex) show working, blocked or done.
+
+SERVER (on the machine that runs hc)
+  hc server status                Core state, pid, uptime
+  echo $HC_TERMINAL_ID            Set inside an hc terminal. HERDR_ENV is not set
+
+CONFIG
+  ~/.config/herdr-app/settings.json
+                                  App settings (also the Settings UI, cmd-,)
+  ~/.config/herdr-app/keys.json   Keys. Editing it stops new default keys
+  ~/.config/herdr-core/config.toml
+                                  hc settings (optional, on the machine that runs hc)
